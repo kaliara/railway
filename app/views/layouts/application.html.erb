@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RubyRailsPostgres</title>
+    <title>Wedding</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <main class="container mx-auto mt-28 px-5 flex">
+      <% if notice %>
+        <div role="alert" class="text-white py-3 bg-blue-600 text-center">
+          <p><%= sanitize notice %></p>
+        </div>
+      <% end %>
+
+      <% if alert %>
+        <div role="alert" class="py-3 text-white bg-red-600 text-center">
+          <p><%= sanitize alert %></p>
+        </div>
+      <% end %>
+      <%= yield %>
+    </main>
   </body>
 </html>

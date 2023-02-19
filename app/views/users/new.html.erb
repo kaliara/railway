@@ -1,0 +1,10 @@
+<div class="max-w-xl p-8 rounded-xl mx-auto text-center my-16 bg-gray-50">
+  <h1 class="font-black text-2xl mb-6">Create an account</h1>
+  <%= form_with(model: @user, data: {turbo: false}) do |form| %>
+  <div class="mb-6">
+    <%= form.label :email, class: "block text-left mb-2" %> <%= form.email_field :email, class: "block w-full px-3 py-2 focus:ring-sky-100 ring-4 border ring-transparent focus:outline-none rounded" %>
+  </div>
+
+  <%= form.submit "Register", class: "bg-emerald-500 font-medium px-3 py-2 text-white w-full text-center hover:bg-emerald-600 cursor-pointer rounded" %>
+  <% end %>
+</div>
