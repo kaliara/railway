@@ -1,14 +1,19 @@
 class ReservationsController < ApplicationController
   before_action :require_user!
-  before_action :set_reservation
+  before_action :set_reservation, except: :update_preview
+
+  layout 'reservation'
 
   # GET /reservation
   def show
+    redirect_to new_reservation_path if @reservation.blank?
   end
 
   # GET /reservation/new
   def new
     @reservation ||= Reservation.new
+    @reservation.user = current_user
+    @reservation.save
   end
 
   # GET /reservation/edit
@@ -18,6 +23,7 @@ class ReservationsController < ApplicationController
   # POST /reservation
   def create
     @reservation = Reservation.new(reservation_params)
+    @reservation.user = current_user
 
     if @reservation.save
       redirect_to @reservation, notice: "Reservation was successfully created."
@@ -35,6 +41,12 @@ class ReservationsController < ApplicationController
     end
   end
 
+  # PATCH/PUT /reservation/preview
+  def update_preview
+    @reservation = current_user.reservation
+    @reservation.assign_attributes(reservation_params.to_h)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation
@@ -43,6 +55,6 @@ class ReservationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reservation_params
-      params.require(:reservation).permit(:user_id, :first_name, :last_name, :guests_adults, :guests_children)
+      params.require(:reservation).permit(:user_id, :first_name, :last_name, :guests_adults, :guests_children, :attending, :attending_friday, :attending_saturday, :attending_sunday, :staying_onsite, :accommodation_rv, :acommodation_tent, :accommodation_cabin, :accommodation_hotel, :cabin_number, :cabin_mate_request, :cabin_own_linens, :hotel_name, :designated_driver_plan)
     end
 end

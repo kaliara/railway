@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   resource :reservation, except: [:destroy]
   resolve('Reservation') { [:reservation] }
 
-  root "reservations#new"
+  patch '/reservation/preview', to: 'reservations#update_preview', as: :reservation_update_preview
+
+  root "reservations#show"
 end

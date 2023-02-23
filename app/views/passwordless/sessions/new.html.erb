@@ -1,5 +1,17 @@
-<%= form_for @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: 'false' } do |f| %>
-  <% email_field_name = :"passwordless[#{@email_field}]" %>
-  <%= text_field_tag email_field_name, params.fetch(email_field_name, nil) %>
-  <%= f.submit 'Custom Submit' %>
-<% end %>
+<div class="w-full flex py-6">
+  <%= form_for @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: 'false' } do |form| %>
+    <div class="flex flex-col space-y-4 mb-6">
+      <div class="my-5">
+        <p id="text04" class="style1a">Enter your email and we will send you a link to login to your profile.</p>
+      </div>
+      <div class="my-5">
+        <%= form.label :email %>
+        <%= form.text_field :email, value: params.fetch('passwordless[email]', nil), required: true, name: 'passwordless[email]', class: "block shadow bg-white rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      </div>
+
+      <div class="my-5">
+        <%= form.submit 'Submit', class: "rounded-lg py-3 px-5 bg-pink-600 hover:bg-pink-700 text-white inline-block font-medium cursor-pointer" %>
+      </div>
+    </div>
+  <% end %>
+</div>

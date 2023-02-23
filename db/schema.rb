@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_19_043538) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_22_222749) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,6 +36,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_19_043538) do
     t.integer "guests_children"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "attending", default: false
+    t.boolean "attending_friday", default: false
+    t.boolean "attending_saturday", default: false
+    t.boolean "attending_sunday", default: false
+    t.boolean "staying_onsite", default: false
+    t.boolean "accommodation_rv", default: false
+    t.boolean "acommodation_tent", default: false
+    t.boolean "accommodation_cabin", default: false
+    t.boolean "accommodation_hotel", default: false
+    t.string "cabin_number"
+    t.string "cabin_mate_request"
+    t.boolean "cabin_own_linens", default: false
+    t.string "hotel_name"
+    t.boolean "designated_driver_plan", default: false
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 

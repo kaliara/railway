@@ -1,30 +1,176 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Wedding</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+<!DOCTYPE HTML>
+<html lang="en">
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+<head>
+	<title>Elyse and Matthew&#039;s Wedding</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<meta name="color-scheme" content="light only" />
+	<meta name="description" content="Elyse and Matthew&#039;s Wedding" />
+	<meta property="og:site_name" content="Elyse and Matthew&#039;s Wedding" />
+	<meta property="og:title" content="Elyse and Matthew&#039;s Wedding" />
+	<meta property="og:type" content="website" />
+	<meta property="og:description" content="Elyse and Matthew&#039;s Wedding" />
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+	<%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+	<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+	<%= stylesheet_link_tag "carrd", "data-turbo-track": "reload" %>
+	<%= stylesheet_link_tag "https://fonts.googleapis.com/css?display=swap&family=Inter:200,200italic,300,300italic,400,400italic,700,700italic" %>
+	<%= javascript_importmap_tags %>
+</head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <% if notice %>
-        <div role="alert" class="text-white py-3 bg-blue-600 text-center">
-          <p><%= sanitize notice %></p>
+<body class="font-sans">
+    <div class="bg" style="background-image: url(<%= asset_url 'bg.png' %>);"></div>
+    <div id="wrapper">
+        <div id="main">
+            <div class="inner">
+                <section id="home-section">
+                    <div id="container04" class="style2 container columns full">
+                      <div class="wrapper">
+                          <div class="inner" data-reorder="0,1" data-reorder-breakpoint="medium">
+                              <div>
+                                  <h1 id="text02" class="style5">Elyse and Matthew&#039;s Wedding Weekend</h1>
+                                  <p id="text04" class="style1">Join us for food, family, and fun during our weekend wedding celebration!</p>
+                                  <div>
+																		<%= yield %>
+																	</div>
+                              </div>
+                              <div>
+                                  <div id="image03" class="image full" data-position="center">
+                                      <span class="frame">
+                                        <%= image_tag 'image03.jpg' %>
+                                      </span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div id="container06" class="style3 container default full">
+                      <div class="wrapper">
+                          <div class="inner">
+                              <h2 id="text20" class="style3">Dates and Times</h2>
+                              <div class="timer" data-visibility="desktop">
+                                <ul>
+                                  <li class="number days">
+                                    <div class="item">
+                                      <span class="digit count3" style="font-size: 85.8px;">
+                                        <span class="component" style="line-height: 92px; height: 92px;"><%= (Date.new(2023,9,23) - Date.today).to_i %> days!</span>
+                                      </span>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                              <hr id="divider04" />
+                              <p id="text25" class="style2"><span class="p">Date &amp; Time: <strong>September 23, 2023 @ 4PM</strong><br> Location: <strong><a href="https://g.page/campschodack1957?share">Camp Schodack in Nassau, NY</a></strong></span></p>
+                          </div>
+                      </div>
+                  </div>
+                  <div id="container09" class="style7 container default full">
+                      <div class="wrapper">
+                          <div class="inner">
+                              <hr id="divider02" class="style1">
+                              <h2 id="text17" class="style4">Exploring the Camp</h2>
+                              <div id="gallery01" class="gallery">
+                                  <div class="inner">
+                                      <ul>
+                                          <li>
+                                              <%= link_to asset_url('a6fcc130_original.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                  <span class="frame"><%= image_tag 'a6fcc130_original.jpg', alt: 'Cabins' %></span></span>
+                                                  <% end %>
+                                          </li>
+                                          <li>
+                                              <%= link_to asset_url('d1c0c81b_original.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                  <span class="frame"><%= image_tag 'd1c0c81b_original.jpg', alt: 'Dining' %></span>
+                                                  <% end %>
+                                          </li>
+                                          <li>
+                                              <%= link_to asset_url('df6bdef2_original.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                  <span class="frame"><%= image_tag 'df6bdef2_original.jpg', alt: 'Traveling Tavern' %></span>
+                                                  <% end %>
+                                          </li>
+                                          <li>
+                                              <%= link_to asset_url('f55dc9a3_original.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                  <span class="frame"><%= image_tag 'f55dc9a3_original.jpg', alt: 'Bonfire' %></span>
+                                                  <% end %>
+                                          </li>
+                                          <li>
+                                              <%= link_to asset_url('ec55cd4f_original.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                  <span class="frame"><%= image_tag 'ec55cd4f_original.jpg', alt: 'Beds' %></span>
+                                                  <% end %>
+                                          </li>
+                                          <li>
+                                              <%= link_to asset_url('060bdfde_original.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                  <span class="frame"><%= image_tag '060bdfde_original.jpg', alt: 'Climbing wall' %></span>
+                                                  <% end %>
+                                          </li>
+                                          <li>
+                                              <%= link_to asset_url('533a734e_original.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                  <span class="frame"><%= image_tag '533a734e_original.jpg', alt: 'Welcome Center' %></span>
+                                                  <% end %>
+                                          </li>
+                                          <li>
+                                              <%= link_to asset_url('80ed90e0_original.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                  <span class="frame"><%= image_tag '80ed90e0_original.jpg', alt: 'Waterslide' %></span>
+                                                  <% end %>
+                                          </li>
+                                          <li>
+                                              <%= link_to asset_url('ae73d435_original.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                  <span class="frame"><%= image_tag 'ae73d435_original.jpg', alt: 'Gazebo' %></span>
+                                                  <% end %>
+                                          </li>
+                                          <li>
+                                              <%= link_to asset_url('19cad2f4_original.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                  <span class="frame"><%= image_tag '19cad2f4_original.jpg', alt: 'Stargazing' %></span>
+                                                  <% end %>
+                                          </li>
+                                          <li>
+                                              <%= link_to asset_url('b6d58147_original.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                  <span class="frame"><%= image_tag 'b6d58147_original.jpg', alt: 'Pool' %></span>
+                                                  <% end %>
+                                          </li>
+                                          <li>
+                                              <%= link_to asset_url('56b24d77_original.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                  <span class="frame"><%= image_tag '56b24d77_original.jpg', alt: 'Tennis Courts' %></span>
+                                                  <% end %>
+                                          </li>
+                                          <li>
+                                              <%= link_to asset_url('c2d004cf_original.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                  <span class="frame"><%= image_tag 'c2d004cf_original.jpg', alt: 'Forest' %></span>
+                                                  <% end %>
+                                          </li>
+                                          <li>
+                                              <%= link_to asset_url('c32fcfc7_original.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                  <span class="frame"><%= image_tag 'c32fcfc7_original.jpg', alt: 'Patio' %></span>
+                                                  <% end %>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div id="container07" data-scroll-id="email" data-scroll-behavior="default" data-scroll-offset="0" class="style1 container default full">
+                      <div class="wrapper">
+                          <div class="inner">
+                              <hr id="divider03" class="style1">
+                              <h2 id="text12" class="style4">Questions and Answers</h2>
+                              <p id="text13" class="style1">To reduce paper and postage, we will be sending out most RSVPs via email. Please provide your name and email to make sure we have it!</p>
+                              <p class="style1 style1a">Have a question that wasn't answered? Send an email to <%= mail_to 'wedding@kaliara.com' %> and we will get back to you right away.</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div id="container08" class="style4 container default full">
+                      <div class="wrapper">
+                          <div class="inner">
+                              <p id="text01" class="style6">Matthew &amp; Elyse © 2023. All rights reserved.</p>
+                          </div>
+                      </div>
+                  </div>
+                </section>
+            </div>
         </div>
-      <% end %>
+    </div>
+</body>
 
-      <% if alert %>
-        <div role="alert" class="py-3 text-white bg-red-600 text-center">
-          <p><%= sanitize alert %></p>
-        </div>
-      <% end %>
-      <%= yield %>
-    </main>
-  </body>
 </html>

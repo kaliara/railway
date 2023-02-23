@@ -1,4 +1,4 @@
-<%= form_with(model: reservation, class: "contents") do |form| %>
+<%= form_with(scope: :reservation, url: reservation_update_preview_path, method: :patch, class: "contents", data: { controller: 'instant', instant_target: 'form', instant_hidden_class: 'hidden' }) do |form| %>
   <% if reservation.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
@@ -12,31 +12,47 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, value: current_user.id, readonly: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :email %>
+    <%= form.text_field :email, value: current_user.email, readonly: true, disabled: true, class: "block shadow bg-gray-100 rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :first_name %>
-    <%= form.text_field :first_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :first_name, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :last_name %>
-    <%= form.text_field :last_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :last_name, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :guests_adults %>
-    <%= form.number_field :guests_adults, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :attending, 'Are you attending?' %>
+    <%= form.label :attending_false do %>
+      <%= form.radio_button :attending, false %>
+      No
+    <% end %>
+    <%= form.label :attending_true do %>
+      <%= form.radio_button :attending, true %>
+      Yes!
+    <% end %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :guests_children %>
-    <%= form.number_field :guests_children, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <% if reservation.attending? %>
+    <div class="my-5">
+      <%= form.label :guests_adults, 'Adult guests (excluding yourself)' %>
+      <%= form.number_field :guests_adults, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="my-5">
+      <%= form.label :guests_children, 'Child guests' %>
+      <%= form.number_field :guests_children, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+  <% end %>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-pink-600 hover:bg-pink-700 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.button "instant", name: 'instant', class: 'invisible' %>
   </div>
 <% end %>
+
