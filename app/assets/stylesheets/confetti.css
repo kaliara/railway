@@ -1,0 +1,24 @@
+.confetti {
+    visibility: hidden;
+    background-color: #222;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 40%;
+    left: 0%;
+}
+
+.confetti-explosion {
+    position: absolute;
+    left: 0;
+    top: 300;
+    overflow: visible;
+    z-index: 5000;
+    pointer-events: none;
+}
+
+.confetti-dot {
+    position: absolute;
+    pointer-events: none;
+}

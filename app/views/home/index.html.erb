@@ -1,14 +1,38 @@
 <% if @user %>
-hello <%= @user.email %>
+  <% if @reservation.first_name.blank? %>
+    <div class="text-base font-normal">We don't have an RSVP under the email <strong class="font-semibold"><%= @user.email %></strong> yet.</div>
+    <div class="my-5">
+      <%= link_to 'RSVP Now', reservation_path, class: "rounded-lg no-underline py-3 px-5 bg-pink-600 hover:bg-pink-700 text-white inline-block font-medium cursor-pointer" %>
+    </div>
+  <% else %>
+    <div class="text-base font-normal">
+      Hello again, <%= @reservation.first_name %>.
+      <% if @reservation.attending? %>
+        We are excited that you can attend! We have you down for
+        <strong class="font-semibold">
+          <%= pluralize @reservation.party_size, 'person' %>
+          <% if @reservation.accommodation_cabin? %>
+            staying on site in the cabins.
+          <% elsif @reservation.accommodation_rv? || @reservation.acommodation_tent? %>
+            staying on site in an RV or tent.
+          <% elsif @reservation.accommodation_rv? %>
+            staying off site in a hotel.
+          <% end %>
+        </strong>
+      <% else %>
+        We are sorry to hear that you cannot make it. 🥺 But thank you for letting us know!
+      <% end %>
+    </div>
+    <div class="text-sm font-normal text-gray-500 mt-4">Has something changed? You can <%= link_to 'update your RSVP', edit_reservation_path %></div>
+  <% end %>
 <% else %>
-<div class="w-full flex py-6">
+<div class="w-full flex">
   <%= form_for @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: 'false' } do |form| %>
-    <div class="flex flex-col space-y-4 mb-6">
-      <div class="my-5">
-        <p id="text04" class="style1a">Enter your email and we will send you a link to login to your profile.</p>
+    <div class="flex flex-col space-y-4">
+      <div class="">
+        <p>Enter your email and we will send you a link to login to your profile.</p>
       </div>
       <div class="my-5">
-        <%= form.label :email %>
         <%= form.text_field :email, value: params.fetch('passwordless[email]', nil), required: true, name: 'passwordless[email]', class: "block shadow bg-white rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
       </div>
 

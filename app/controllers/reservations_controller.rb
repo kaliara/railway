@@ -6,8 +6,13 @@ class ReservationsController < ApplicationController
 
   # GET /reservation
   def show
-    redirect_to new_reservation_path if @reservation.blank?
-    redirect_to edit_reservation_path if [@reservation.first_name, @reservation.last_name].any?(&:blank?)
+    if @reservation.blank?
+      redirect_to new_reservation_path
+    elsif @reservation.first_name.blank?
+      redirect_to edit_reservation_path
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /reservation/new

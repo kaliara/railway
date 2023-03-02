@@ -1,6 +1,6 @@
 <div class="w-full flex py-6">
   <%= form_for @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: 'false' } do |form| %>
-    <div class="flex flex-col space-y-4 mb-6">
+    <div class="flex flex-col space-y-4">
       <div class="my-5">
         <p id="text04" class="style1a">Enter your email and we will send you a link to login to your profile.</p>
       </div>

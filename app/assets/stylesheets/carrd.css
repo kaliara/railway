@@ -2081,6 +2081,8 @@ hr.style1:before {
     margin-top: -1.5px;
 }
 
+
+/* 
 form {
     display: flex;
     justify-content: var(--flex-alignment);
@@ -2149,34 +2151,6 @@ form select option {
 
 form select::-ms-expand {
     display: none;
-}
-
-form input[type="checkbox"] {
-    -webkit-appearance: none;
-    display: block;
-    float: left;
-    margin-right: -2rem;
-    opacity: 0;
-    width: 1rem;
-    z-index: -1;
-}
-
-form input[type="checkbox"]+label {
-    align-items: center;
-    display: inline-flex;
-    line-height: 1.6;
-    text-align: left;
-}
-
-form input[type="checkbox"]+label:before {
-    background-position: center;
-    background-repeat: no-repeat;
-    content: '';
-    cursor: pointer;
-    display: inline-block;
-    flex-grow: 0;
-    flex-shrink: 0;
-    vertical-align: middle;
 }
 
 form input[type="number"] {
@@ -2329,7 +2303,6 @@ form.style3 input[type="tel"],
 form.style3 input[type="number"],
 form.style3 textarea,
 form.style3 select,
-form.style3 input[type="checkbox"]+label,
 form.style3 .file {
     font-size: 1em;
     font-family: 'Inter', sans-serif;
@@ -2357,10 +2330,6 @@ form.style3 select:focus,
 form.style3 .file.focus {
     border-color: #8F3986;
     box-shadow: 0 0 0 1px #8F3986;
-}
-
-form.style3 input[type="checkbox"]+label {
-    color: #262626;
 }
 
 form.style3 input[type="text"],
@@ -2523,7 +2492,7 @@ form.style3 :-ms-input-placeholder {
 form.style3 .file[data-filename=""]:before {
     color: #262626;
     opacity: 0.55;
-}
+} */
 
 .gallery .inner {
     display: inline-block;
