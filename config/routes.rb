@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   patch '/reservation/preview', to: 'reservations#update_preview', as: :reservation_update_preview
   get '/instant_login/:token', to: 'sessions#create', as: :instant_login
 
-  root "reservations#show"
+  root "home#index"
 end

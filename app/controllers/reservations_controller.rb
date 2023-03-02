@@ -7,6 +7,7 @@ class ReservationsController < ApplicationController
   # GET /reservation
   def show
     redirect_to new_reservation_path if @reservation.blank?
+    redirect_to edit_reservation_path if [@reservation.first_name, @reservation.last_name].any?(&:blank?)
   end
 
   # GET /reservation/new
@@ -43,6 +44,7 @@ class ReservationsController < ApplicationController
 
   # PATCH/PUT /reservation/preview
   def update_preview
+    @focused = params[:focus]
     @reservation = current_user.reservation
     @reservation.assign_attributes(reservation_params.to_h)
   end
