@@ -1,5 +1,5 @@
 <div class="mx-auto w-full py-12">
-  <h1 class="font-medium text-4xl mb-12">My Reservation</h1>
+  <h1 class="font-medium text-4xl mb-12" id="reservation_form">My Reservation</h1>
 
   <%= turbo_frame_tag dom_id(@reservation) do %>
     <%= render "form", reservation: @reservation %>

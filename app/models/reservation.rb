@@ -1,6 +1,10 @@
 class Reservation < ApplicationRecord
   belongs_to :user
 
+  def unstarted?
+    first_name.blank?
+  end
+
   def multiple_days?
     [attending_friday, attending_saturday, attending_sunday].map(&:to_s).tally['true'].to_i > 0
   end

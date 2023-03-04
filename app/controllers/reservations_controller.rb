@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
   def show
     if @reservation.blank?
       redirect_to new_reservation_path
-    elsif @reservation.first_name.blank?
+    elsif @reservation.unstarted?
       redirect_to edit_reservation_path
     else
       redirect_to root_path
@@ -32,7 +32,7 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
 
     if @reservation.save
-      redirect_to @reservation, notice: "Reservation was successfully created."
+      redirect_to root_path, notice: "Thanks #{@reservation.first_name}. We've updated your RSVP!"
     else
       render :new, status: :unprocessable_entity
     end
@@ -41,7 +41,7 @@ class ReservationsController < ApplicationController
   # PATCH/PUT /reservation
   def update
     if @reservation.update(reservation_params)
-      redirect_to @reservation, notice: "Reservation was successfully updated."
+      redirect_to root_path, notice: "Thanks #{@reservation.first_name}. We've updated your RSVP!"
     else
       render :edit, status: :unprocessable_entity
     end

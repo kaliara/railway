@@ -1,12 +1,12 @@
 <% if @user %>
-  <% if @reservation.first_name.blank? %>
+  <% if @reservation.blank? || @reservation.unstarted? %>
     <div class="text-base font-normal">We don't have an RSVP under the email <strong class="font-semibold"><%= @user.email %></strong> yet.</div>
     <div class="my-5">
       <%= link_to 'RSVP Now', reservation_path, class: "rounded-lg no-underline py-3 px-5 bg-pink-600 hover:bg-pink-700 text-white inline-block font-medium cursor-pointer" %>
     </div>
   <% else %>
     <div class="text-base font-normal">
-      Hello again, <%= @reservation.first_name %>.
+      Hello, <%= @reservation.first_name %>.
       <% if @reservation.attending? %>
         We are excited that you can attend! We have you down for
         <strong class="font-semibold">
@@ -15,15 +15,15 @@
             staying on site in the cabins.
           <% elsif @reservation.accommodation_rv? || @reservation.acommodation_tent? %>
             staying on site in an RV or tent.
-          <% elsif @reservation.accommodation_rv? %>
-            staying off site in a hotel.
+          <% else %>
+            staying off site in a hotel or Airbnb.
           <% end %>
         </strong>
       <% else %>
         We are sorry to hear that you cannot make it. 🥺 But thank you for letting us know!
       <% end %>
     </div>
-    <div class="text-sm font-normal text-gray-500 mt-4">Has something changed? You can <%= link_to 'update your RSVP', edit_reservation_path %></div>
+    <div class="text-sm font-normal text-gray-500 mt-4">Has something changed? You can <%= link_to 'view or update your RSVP', edit_reservation_path, class: 'text-blue-600 hover:text-blue-800 font-medium' %></div>
   <% end %>
 <% else %>
 <div class="w-full flex">
