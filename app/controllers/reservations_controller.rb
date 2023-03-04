@@ -6,13 +6,7 @@ class ReservationsController < ApplicationController
 
   # GET /reservation
   def show
-    if @reservation.blank?
-      redirect_to new_reservation_path
-    elsif @reservation.unstarted?
-      redirect_to edit_reservation_path
-    else
-      redirect_to root_path
-    end
+    redirect_to edit_reservation_path
   end
 
   # GET /reservation/new
@@ -24,6 +18,7 @@ class ReservationsController < ApplicationController
 
   # GET /reservation/edit
   def edit
+    
   end
 
   # POST /reservation
@@ -57,7 +52,14 @@ class ReservationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation
-      @reservation = current_user.reservation
+      if current_user.reservation
+        @reservation = current_user.reservation
+      else
+        @reservation ||= Reservation.new
+        @reservation.user = current_user
+        @reservation.save
+      end
+      @reservation
     end
 
     # Only allow a list of trusted parameters through.

@@ -299,12 +299,12 @@ a {
     position: relative;
     text-align: var(--alignment);
     z-index: 1;
-    background-color: #FFFAFE;
+    background-color: #fff5f5;
     box-shadow: 0rem 1.75rem 2rem 0rem rgba(142, 169, 175, 0.502);
-    border-top: solid 1px #8EA9AF;
-    border-right: solid 1px #8EA9AF;
-    border-bottom: solid 1px #8EA9AF;
-    border-left: solid 1px #8EA9AF;
+    border-top: solid 1px #ab5c68;
+    border-right: solid 1px #ab5c68;
+    border-bottom: solid 1px #ab5c68;
+    border-left: solid 1px #ab5c68;
     transition: opacity 0.875s ease 0.125s, transform 0.875s ease 0.125s;
 }
 
@@ -853,7 +853,7 @@ p.style4 span.p:nth-child(n+2) {
 
 .buttons.style3 li a svg {
     display: block;
-    fill: #B36DAC;
+    fill: #ab5c68;
     flex-grow: 0;
     flex-shrink: 0;
     height: 100%;
@@ -871,8 +871,8 @@ p.style4 span.p:nth-child(n+2) {
 }
 
 .buttons.style3 .button {
-    color: #B36DAC;
-    border: solid 2px #B36DAC;
+    color: #ab5c68;
+    border: solid 2px #ab5c68;
 }
 
 .buttons.style3 .button:hover {
@@ -908,7 +908,7 @@ p.style4 span.p:nth-child(n+2) {
 }
 
 .buttons.style2 .button {
-    background-color: #B36DAC;
+    background-color: #ab5c68;
     color: #FFFFFF;
 }
 
@@ -952,6 +952,10 @@ p.style4 span.p:nth-child(n+2) {
 .image.full:last-child .frame {
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
+}
+
+#image03 {
+    right: 0.5px;
 }
 
 #image03 .frame {
@@ -1192,7 +1196,7 @@ p.style4 span.p:nth-child(n+2) {
     width: 100%;
     align-items: center;
     justify-content: center;
-    background-color: #B36DAC;
+    background-color: #ab5c68;
     background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%22640%22%20height%3D%22480%22%20viewBox%3D%220%200%20640%20480%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%3Cstyle%20type%3D%22text%2Fcss%22%3E%20use%5Bhref%3D%22%23heart%22%5D%20%7B%20fill%3A%20rgba(255,255,255,0.059)%3B%20%7D%20%3C%2Fstyle%3E%20%3Csymbol%20id%3D%22heart%22%20viewBox%3D%220%200%2040.0%2040.0%22%3E%20%3Cpath%20d%3D%22M%202%2C13%20A%207%2C17%20325%2C0%2C0%2020%2C37%20A%207%2C17%2035%2C0%2C0%2038%2C13%20A%209%2C9%200%2C0%2C0%2020%2C13%20A%209%2C9%200%2C0%2C0%202%2C13%22%20%2F%3E%20%3C%2Fsymbol%3E%20%3Cg%20transform%3D%22translate%2836.0%2C%20294.43%29%22%3E%20%3Cuse%20href%3D%22%23heart%22%20width%3D%2240.0%22%20height%3D%2240.0%22%20transform%3D%22scale%280.4%29%22%20%2F%3E%20%3C%2Fg%3E%20%3Cg%20transform%3D%22translate%2888.0%2C%20282.71%29%22%3E%20%3Cuse%20href%3D%22%23heart%22%20width%3D%2240.0%22%20height%3D%2240.0%22%20transform%3D%22scale%280.9%29%22%20%2F%3E%20%3C%2Fg%3E%20%3Cg%20transform%3D%22translate%28160.0%2C%2071.97%29%22%3E%20%3Cuse%20href%3D%22%23heart%22%20width%3D%2240.0%22%20height%3D%2240.0%22%20transform%3D%22scale%280.5%29%22%20%2F%3E%20%3C%2Fg%3E%20%3Cg%20transform%3D%22translate%28216.0%2C%20218.66%29%22%3E%20%3Cuse%20href%3D%22%23heart%22%20width%3D%2240.0%22%20height%3D%2240.0%22%20transform%3D%22scale%280.3%29%22%20%2F%3E%20%3C%2Fg%3E%20%3Cg%20transform%3D%22translate%28264.0%2C%20356.4%29%22%3E%20%3Cuse%20href%3D%22%23heart%22%20width%3D%2240.0%22%20height%3D%2240.0%22%20transform%3D%22scale%280.9%29%22%20%2F%3E%20%3C%2Fg%3E%20%3Cg%20transform%3D%22translate%28336.0%2C%20149.89%29%22%3E%20%3Cuse%20href%3D%22%23heart%22%20width%3D%2240.0%22%20height%3D%2240.0%22%20transform%3D%22scale%280.9%29%22%20%2F%3E%20%3C%2Fg%3E%20%3Cg%20transform%3D%22translate%28408.0%2C%2042.95%29%22%3E%20%3Cuse%20href%3D%22%23heart%22%20width%3D%2240.0%22%20height%3D%2240.0%22%20transform%3D%22scale%280.3%29%22%20%2F%3E%20%3C%2Fg%3E%20%3Cg%20transform%3D%22translate%28456.0%2C%20369.67%29%22%3E%20%3Cuse%20href%3D%22%23heart%22%20width%3D%2240.0%22%20height%3D%2240.0%22%20transform%3D%22scale%280.6%29%22%20%2F%3E%20%3C%2Fg%3E%20%3Cg%20transform%3D%22translate%28516.0%2C%20231.28%29%22%3E%20%3Cuse%20href%3D%22%23heart%22%20width%3D%2240.0%22%20height%3D%2240.0%22%20transform%3D%22scale%280.8%29%22%20%2F%3E%20%3C%2Fg%3E%20%3Cg%20transform%3D%22translate%28584.0%2C%20193.66%29%22%3E%20%3Cuse%20href%3D%22%23heart%22%20width%3D%2240.0%22%20height%3D%2240.0%22%20transform%3D%22scale%280.5%29%22%20%2F%3E%20%3C%2Fg%3E%3C%2Fsvg%3E');
     background-size: cover;
     background-position: center;
@@ -1481,7 +1485,7 @@ p.style4 span.p:nth-child(n+2) {
     width: 100%;
     align-items: center;
     justify-content: center;
-    background-color: #FFFAFE;
+    background-color: #fff5f5;
     background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20viewBox%3D%220%200%20512%20512%22%20width%3D%22512%22%20height%3D%22512%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%3Cfilter%20id%3D%22noise%22%3E%20%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.875%22%20result%3D%22noise%22%20%2F%3E%20%3CfeColorMatrix%20type%3D%22matrix%22%20values%3D%220.99609375%200%200%200%200%200%200.99609375%200%200%200%200%200%200.99609375%200%200%200%200%200%200.05859375%200%22%20%2F%3E%20%3C%2Ffilter%3E%20%3Crect%20filter%3D%22url%28%23noise%29%22%20x%3D%220%22%20y%3D%220%22%20width%3D%22512%22%20height%3D%22512%22%20fill%3D%22transparent%22%20opacity%3D%221%22%20%2F%3E%3C%2Fsvg%3E');
     background-size: 512px;
     background-position: center;
@@ -1630,7 +1634,7 @@ p.style4 span.p:nth-child(n+2) {
     width: 100%;
     align-items: center;
     justify-content: center;
-    background-color: #FFFAFE;
+    background-color: #fff5f5;
     background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20viewBox%3D%220%200%20512%20512%22%20width%3D%22512%22%20height%3D%22512%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%3Cfilter%20id%3D%22noise%22%3E%20%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.875%22%20result%3D%22noise%22%20%2F%3E%20%3CfeColorMatrix%20type%3D%22matrix%22%20values%3D%220.99609375%200%200%200%200%200%200.99609375%200%200%200%200%200%200.99609375%200%200%200%200%200%200.05859375%200%22%20%2F%3E%20%3C%2Ffilter%3E%20%3Crect%20filter%3D%22url%28%23noise%29%22%20x%3D%220%22%20y%3D%220%22%20width%3D%22512%22%20height%3D%22512%22%20fill%3D%22transparent%22%20opacity%3D%221%22%20%2F%3E%3C%2Fsvg%3E');
     background-size: 512px;
     background-position: center;
@@ -2284,7 +2288,7 @@ form.style3 .field button {
     line-height: 2.4rem;
     width: 2.4rem;
     border-radius: 0.96rem;
-    background-color: #B36DAC;
+    background-color: #ab5c68;
     transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
 }
 
@@ -2318,7 +2322,7 @@ form.style3 textarea,
 form.style3 select,
 form.style3 .file {
     color: #262626;
-    border: solid 1px #B36DAC;
+    border: solid 1px #ab5c68;
 }
 
 form.style3 input[type="text"]:focus,
@@ -2351,7 +2355,7 @@ form.style3 textarea {
 }
 
 form.style3 select {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='504' height='552' preserveAspectRatio='none' viewBox='0 0 504 552'%3E%3Cpath d='M483.9,210.9L252,442.9L20.1,210.9l67.9-67.9L252,307.1l164.1-164.1L483.9,210.9z' fill='%23B36DAC' /%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='504' height='552' preserveAspectRatio='none' viewBox='0 0 504 552'%3E%3Cpath d='M483.9,210.9L252,442.9L20.1,210.9l67.9-67.9L252,307.1l164.1-164.1L483.9,210.9z' fill='%ab5c68' /%3E%3C/svg%3E");
     background-position: calc(100% - 1.05rem) center;
     padding-right: 3rem;
 }
@@ -2359,7 +2363,7 @@ form.style3 select {
 form.style3 input[type="checkbox"]+label:before {
     border-radius: 1.5rem;
     color: #262626;
-    border: solid 1px #B36DAC;
+    border: solid 1px #ab5c68;
     background-size: 1.275rem;
     height: 2.25rem;
     width: 2.25rem;
@@ -2415,7 +2419,7 @@ form.style3 .actions button {
     direction: var(--site-language-direction);
     overflow: hidden;
     text-overflow: ellipsis;
-    background-color: #B36DAC;
+    background-color: #ab5c68;
     color: #FFFFFF;
     transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
     position: relative;
