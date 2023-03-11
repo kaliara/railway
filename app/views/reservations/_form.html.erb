@@ -13,7 +13,7 @@
 
   <div class="my-5">
     <%= form.label :email %>
-    <%= form.text_field :email, value: current_user.email, readonly: true, disabled: true, class: "block shadow bg-gray-100 rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+    <%= form.text_field :email, value: current_user.email, readonly: true, class: "pointer-events-none block shadow bg-gray-100 rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
   </div>
 
   <div class="my-5 grid grid-cols-12 gap-6">
@@ -30,13 +30,13 @@
 
   <div class="my-10">
     <%= form.label :attending, 'Are you attending?' %>
-    <%= form.label :attending_false, class: "block" do %>
-      <%= form.radio_button :attending, false, data: { instant_target: 'input' } %>
-      No
-    <% end %>
-    <%= form.label :attending_true, class: "block" do %>
+    <%= form.label :attending_true, class: "block my-2" do %>
       <%= form.radio_button :attending, true, data: { instant_target: 'input' } %>
-      Yes!
+      Yes, I/we will be there celebrating
+    <% end %>
+    <%= form.label :attending_false, class: "block my-2" do %>
+      <%= form.radio_button :attending, false, data: { instant_target: 'input' } %>
+      No, but I/we will be there in spirit
     <% end %>
   </div>
 
@@ -85,15 +85,15 @@
 
     <div class="my-10">
       <%= form.label :attending, 'Which days will you be there?' %>
-      <%= form.label :attending_friday, class: "block" do %>
+      <%= form.label :attending_friday, class: "block mt-1" do %>
         <%= form.check_box :attending_friday, data: { instant_target: 'input' }, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
         Friday
       <% end %>
-      <%= form.label :attending_saturday, class: "block" do %>
+      <%= form.label :attending_saturday, class: "block mt-1" do %>
         <%= form.check_box :attending_saturday, data: { instant_target: 'input' }, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
         Saturday
       <% end %>
-      <%= form.label :attending_sunday, class: "block" do %>
+      <%= form.label :attending_sunday, class: "block mt-1" do %>
         <%= form.check_box :attending_sunday, data: { instant_target: 'input' }, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
         Sunday
       <% end %>

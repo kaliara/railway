@@ -18,7 +18,13 @@ class ReservationsController < ApplicationController
 
   # GET /reservation/edit
   def edit
-    
+    if @reservation.unstarted? || !@reservation.attending?
+      render 'edit'
+    elsif params[:optional]
+      render 'optional'
+    else
+      render 'edit'
+    end
   end
 
   # POST /reservation
@@ -27,7 +33,7 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
 
     if @reservation.save
-      redirect_to root_path, notice: "Thanks #{@reservation.first_name}. We've updated your RSVP!"
+      redirect_to optional_survey_path, notice: "Thanks #{@reservation.first_name}. We've saved your RSVP!"
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +42,7 @@ class ReservationsController < ApplicationController
   # PATCH/PUT /reservation
   def update
     if @reservation.update(reservation_params)
-      redirect_to root_path, notice: "Thanks #{@reservation.first_name}. We've updated your RSVP!"
+      redirect_to optional_survey_path, notice: "Thanks #{@reservation.first_name}. We've saved your RSVP!"
     else
       render :edit, status: :unprocessable_entity
     end
