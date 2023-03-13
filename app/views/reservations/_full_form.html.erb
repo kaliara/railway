@@ -1,0 +1,10 @@
+<%= form_with(scope: :reservation, url: reservation_update_full_preview_path, method: :patch, class: "contents", data: { controller: 'instant', instant_target: 'form' }) do |form| %>
+  <%= render "fields", form: form, reservation: reservation %>
+  <%= render "optional_fields", form: form, reservation: reservation %>
+
+  <div class="inline">
+    <%= form.submit "Update RSVP", class: "rounded-lg py-3 px-5 bg-pink-600 hover:bg-pink-700 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.button "instant", name: 'instant', class: 'invisible' %>
+  </div>
+<% end %>
+

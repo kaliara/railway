@@ -1,0 +1,8 @@
+<div class="mx-auto w-full py-12">
+  <h1 class="font-normal text-3xl mb-2" id="reservation_form">My RSVP</h1>
+  <p class="text-sm mt-2 mb-8">View the schedule, accomodations, and other <a href="#details" class="text-pink-600 hover:text-pink-800 font-medium">wedding details</a>.</p>
+
+  <%= turbo_frame_tag dom_id(@reservation, 'full') do %>
+    <%= render "full_form", reservation: @reservation %>
+  <% end %>
+</div>

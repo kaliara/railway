@@ -1,27 +1,9 @@
 <div class="mx-auto w-full py-12">
   <h1 class="font-normal text-3xl mb-2" id="reservation_form">Optional Questions</h1>
+  <p class="text-sm mt-2 mb-8">Answers to these questions help us with additional planning but are not required.</p>
 
-  <%= form_with(scope: @reservation, url: reservation_path, method: :patch, class: "contents") do |form| %>
-    <% if @reservation.accommodation_cabin? %>
-      <div class="my-10">
-        <%= form.label :cabin_own_linens do %>
-          Can you bring your own linens? (Queen size for couples, twin size for singles)
-        <% end %>
-        <%= form.label :cabin_own_linens, class: "block mt-1" do %>
-          <%= form.check_box :cabin_own_linens, data: { instant_target: 'input' }, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
-          Yep, no problem
-        <% end %>
-      </div>
-      <% if @reservation.cabin_own_linens? %>
-        Thanks!
-      <% end %>
-    <% else %>
-      a differetn Questions not for cabins
-    <% end %>
-
-    <div class="inline">
-      <%= form.submit "Save Answers", class: "rounded-lg py-3 px-5 bg-pink-600 hover:bg-pink-700 text-white inline-block font-medium cursor-pointer" %>
-      <div class="text-xs text-gray-500 mt-4">(you may edit these optional answers)</div>
-    </div>
+  <%= turbo_frame_tag dom_id(@reservation, 'optional') do %>
+    <%= render "optional_form", reservation: @reservation %>
   <% end %>
+
 </div>

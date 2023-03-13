@@ -8,15 +8,19 @@
     <div class="text-base font-normal">
       Hello, <%= @reservation.first_name %>.
       <% if @reservation.attending? %>
-        We are excited that you can attend! We have you down for
+        We are excited that you can attend! 🎉 We have you down for
         <strong class="font-semibold">
           <%= pluralize @reservation.party_size, 'person' %>
           <% if @reservation.accommodation_cabin? %>
-            staying on site in the cabins.
-          <% elsif @reservation.accommodation_rv? || @reservation.acommodation_tent? %>
-            staying on site in an RV or tent.
+            staying on-site in the cabins.
+          <% elsif @reservation.accommodation_rv? %>
+            staying on-site in your RV or camper.
+          <% elsif @reservation.accommodation_tent? %>
+            staying on-site in your tent.
+          <% elsif @reservation.accommodation_hotel? %>
+            staying off-site at a hotel<%= " (#{@reservation.hotel_name})" unless @reservation.hotel_name.blank? %>.
           <% else %>
-            staying off site in a hotel or Airbnb.
+            staying off site.
           <% end %>
         </strong>
       <% else %>

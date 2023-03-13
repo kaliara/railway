@@ -1,0 +1,112 @@
+<div class="my-5">
+  <%= form.label :email %>
+  <%= form.text_field :email, value: current_user.email, readonly: true, disabled: true, class: "opacity-100 pointer-events-none block shadow bg-gray-100 rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+</div>
+
+<div class="my-5 grid grid-cols-12 gap-6">
+  <div class="col-span-6">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+  </div>
+  <div class="col-span-6">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+  </div>
+</div>
+
+
+<div class="my-10">
+  <%= form.label :attending, 'Are you attending?' %>
+  <%= form.label :attending_true, class: "block my-2" do %>
+    <%= form.radio_button :attending, true, data: { instant_target: 'input' } %>
+    Yes, I/we will be there celebrating
+  <% end %>
+  <%= form.label :attending_false, class: "block my-2" do %>
+    <%= form.radio_button :attending, false, data: { instant_target: 'input' } %>
+    No, but I/we will be there in spirit
+  <% end %>
+</div>
+
+<% if reservation.attending? %>
+  <div class="my-10 flex flex-col sm:grid sm:grid-cols-12">
+    <div class="col-span-1">
+      <%= form.label :you, 'You' %>
+      <%= form.text_field :you, value: 1, readonly: true, disabled: true, class: "block shadow bg-gray-100 rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+    </div>
+
+    <div class="col-span-1 pt-3 md:pt-9 text-center">
+      &plus;
+    </div>
+
+    <div class="col-span-3">
+      <%= form.label :guests_adults do %>
+        Adult guests
+      <% end %>
+      <%= form.number_field :guests_adults, class: "block shadow bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+      <div class="text-xs text-gray-500">excluding you</div>
+    </div>
+
+    <div class="col-span-1 pt-3 md:pt-9 text-center">
+      &plus;
+    </div>
+
+    <div class="col-span-3">
+      <%= form.label :guests_children do %>
+        Child guests
+      <% end %>
+      <%= form.number_field :guests_children, class: "block shadow bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+      <div class="text-xs text-gray-500">18 or under</div>
+    </div>
+
+    <div class="col-span-1 pt-3 md:pt-9 text-center">
+      &equals;
+    </div>
+
+    <div class="col-span-2">
+      <%= form.label :total_party, class: "block" do %>
+        Total party
+      <% end %>
+      <%= form.text_field :you, value: reservation.party_size, readonly: true, disabled: true, class: "block shadow bg-gray-100 rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+    </div>
+  </div>
+
+  <div class="my-10">
+    <%= form.label :attending, 'Which days will you be there?' %>
+    <%= form.label :attending_friday, class: "block mt-1" do %>
+      <%= form.check_box :attending_friday, data: { instant_target: 'input' }, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
+      Friday
+    <% end %>
+    <%= form.label :attending_saturday, class: "block mt-1" do %>
+      <%= form.check_box :attending_saturday, data: { instant_target: 'input' }, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
+      Saturday
+    <% end %>
+    <%= form.label :attending_sunday, class: "block mt-1" do %>
+      <%= form.check_box :attending_sunday, data: { instant_target: 'input' }, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
+      Sunday
+    <% end %>
+  </div>
+
+  <% if reservation.multiple_days? %>
+    <div class="my-10">
+      <%= form.label :accommodation_cabin, 'Would you like to stay in a free on-site cabin?' %>
+      <%= form.label :accommodation_cabin_false, class: "block" do %>
+        <%= form.radio_button :accommodation_cabin, false, data: { instant_target: 'input' } %>
+        No
+      <% end %>
+      <%= form.label :accommodation_cabin_true, class: "block" do %>
+        <%= form.radio_button :accommodation_cabin, true, data: { instant_target: 'input' } %>
+        Yes!
+      <% end %>
+
+      <% if reservation.accommodation_cabin? %>
+        <div class="my-5">
+          <%= form.label :cabin_mate_request, 'Is there another party or guest you\'d like to share a cabin with?' %>
+          <%= form.text_field :cabin_mate_request, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+          <div class="text-xs text-gray-500">indicate the first and last name of the guest(s)</div>
+        </div>
+      <% else %>
+        <%= form.hidden_field :cabin_mate_request, value: '' %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,15 @@
+<%= form_with(scope: :reservation, url: reservation_update_optional_preview_path, method: :patch, class: "contents", data: { controller: 'instant', instant_target: 'form' }) do |form| %>
+  <%= form.hidden_field :optional_completed, value: true %>
+
+  <%= render "optional_fields", form: form, reservation: reservation %>
+
+  <div class="inline">
+    <% if @reservation.guest_names.blank? %>
+      <%= form.submit "Complete RSVP", class: "rounded-lg py-3 px-5 bg-pink-600 hover:bg-pink-700 text-white inline-block font-medium cursor-pointer" %>
+    <% else %>
+      <%= form.submit "Save Answers", class: "rounded-lg py-3 px-5 bg-pink-600 hover:bg-pink-700 text-white inline-block font-medium cursor-pointer" %>
+    <% end %>
+    <%= form.button "instant", name: 'instant', class: 'invisible' %>
+    <div class="text-xs text-gray-500 mt-4">you may edit these optional answers at any time</div>
+  </div>
+<% end %>

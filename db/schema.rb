@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_02_155131) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_13_190619) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,14 +42,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_155131) do
     t.boolean "attending_sunday", default: false
     t.boolean "staying_onsite", default: false
     t.boolean "accommodation_rv", default: false
-    t.boolean "acommodation_tent", default: false
+    t.boolean "accommodation_tent", default: false
     t.boolean "accommodation_cabin", default: false
     t.boolean "accommodation_hotel", default: false
     t.string "cabin_number"
     t.string "cabin_mate_request"
-    t.boolean "cabin_own_linens", default: false
+    t.string "cabin_own_linens", default: "false"
     t.string "hotel_name"
     t.boolean "designated_driver_plan", default: false
+    t.string "food_allergies"
+    t.string "dietary_preferences"
+    t.string "additional_comments"
+    t.string "guest_names"
+    t.boolean "meal_friday_dinner", default: false
+    t.boolean "meal_saturday_breakfast", default: false
+    t.boolean "meal_saturday_lunch", default: false
+    t.boolean "meal_saturday_dinner", default: false
+    t.boolean "meal_saturday_snack", default: false
+    t.boolean "meal_sunday_brunch", default: false
+    t.boolean "optional_completed", default: false
+    t.string "cabin_own_linens_description"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 

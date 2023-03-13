@@ -1,0 +1,130 @@
+<% if reservation.attending? %>
+  <% if @reservation.party_size > 1 %>
+    <div class="my-10">
+      <%= form.label :guest_names, "#{'Name'.pluralize(@reservation.party_size - 1)} of the #{pluralize @reservation.party_size - 1, 'guest'} in your party" %>
+      <%= form.text_field :guest_names, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :guest_names, value: '' %>
+  <% end %>
+  <div class="my-5">
+    <%= form.label :food_allergies, 'Food allergies' %>
+    <%= form.text_field :food_allergies, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+  </div>
+  <div class="my-5">
+    <%= form.label :dietary_preferences, 'Dietary preferences' %>
+    <%= form.text_field :dietary_preferences, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+  </div>
+  <div class="my-5">
+    <%= form.label 'Which meals do you plan to be there for?' %>
+    <%= form.label :meal_friday_dinner, class: "block mt-1" do %>
+      <%= form.check_box :meal_friday_dinner, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
+      Friday dinner <span class="text-xs text-gray-500 mt-1 mb-3">(6pm - 8pm)</span>
+    <% end %>
+    <%= form.label :meal_saturday_breakfast, class: "block mt-1" do %>
+      <%= form.check_box :meal_saturday_breakfast, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
+      Saturday breakfast <span class="text-xs text-gray-500 mt-1 mb-3">(8am - 10am)</span>
+    <% end %>
+    <%= form.label :meal_saturday_lunch, class: "block mt-1" do %>
+      <%= form.check_box :meal_saturday_lunch, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
+      Saturday lunch <span class="text-xs text-gray-500 mt-1 mb-3">(12pm - 2pm)</span>
+    <% end %>
+    <%= form.label :meal_saturday_dinner, class: "block mt-1" do %>
+      <%= form.check_box :meal_saturday_dinner, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
+      <strong class="font-semibold">Saturday reception dinner</strong> <span class="text-xs text-gray-500 mt-1 mb-3">(5:30pm)</span>
+    <% end %>
+    <%= form.label :meal_saturday_snack, class: "block mt-1" do %>
+      <%= form.check_box :meal_saturday_snack, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
+      Saturday late-night snack <span class="text-xs text-gray-500 mt-1 mb-3">(10pm)</span>
+    <% end %>
+    <%= form.label :meal_sunday_brunch, class: "block mt-1" do %>
+      <%= form.check_box :meal_sunday_brunch, data: { instant_target: 'input' }, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
+      Sunday brunch <span class="text-xs text-gray-500 mt-1 mb-3">(10am - 12pm)</span>
+    <% end %>
+  </div>
+  <% if !@reservation.accommodation_cabin? %>
+    <div class="my-10">
+      <%= form.label :staying_onsite, 'Are you planning to stay off-site in a hotel or Airbnb?' %>
+      <%= form.label :staying_onsite_true, class: "block mt-1" do %>
+        <%= form.radio_button :staying_onsite, true, data: { instant_target: 'input' } %>
+        No
+      <% end %>
+      <%= form.label :staying_onsite_false, class: "block mt-1" do %>
+        <%= form.radio_button :staying_onsite, false, data: { instant_target: 'input' } %>
+        Yes
+      <% end %>
+    </div>
+  <% end %>
+  <% if @reservation.staying_onsite? || @reservation.accommodation_cabin? %>
+    <% if @reservation.accommodation_cabin? %>
+      <div class="my-10">
+        <%= form.label :cabin_own_linens do %>
+          Will you be bringing your own bed linens?
+          <div class="text-xs text-gray-500 mt-1 mb-3">Queen set with pillows for couples, twin set with pillow for singles</div>
+        <% end %>
+        <%= form.label :cabin_own_linens_none, class: "block mt-1" do %>
+          <%= form.radio_button :cabin_own_linens, 'none', data: { instant_target: 'input' } %>
+          No, please provide for me
+        <% end %>
+        <%= form.label :cabin_own_linens_all, class: "block mt-1" do %>
+          <%= form.radio_button :cabin_own_linens, 'all', data: { instant_target: 'input' } %>
+          Yes, I can bring all of my own
+        <% end %>
+        <%= form.label :cabin_own_linens_some, class: "block mt-1" do %>
+          <%= form.radio_button :cabin_own_linens, 'some', data: { instant_target: 'input' }  %>
+          I can bring some of my own
+        <% end %>
+
+        <% if @reservation.cabin_own_linens_discrete? %>
+          <%= form.hidden_field :cabin_own_linens_description, value: '' %>
+        <% else %>
+          <div class="my-5">
+            <%= form.label :cabin_own_linens_description do %>
+              Please specify which linens you can bring.
+            <% end %>
+            <%= form.text_field :cabin_own_linens_description, class: "block shadow bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="my-10">
+        <%= form.label 'Do you plan to stay on-site but bring your own text, camper, or RV?' %>
+        <%= form.label :accommodation_tent, class: "block mt-1" do %>
+          <%= form.check_box :accommodation_tent, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
+          Tent
+        <% end %>
+        <%= form.label :accommodation_rv, class: "block mt-1" do %>
+          <%= form.check_box :accommodation_rv, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
+          RV or camper
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= form.hidden_field :accommodation_tent, value: false %>
+    <%= form.hidden_field :accommodation_rv, value: false %>
+
+    <div class="my-10">
+      <%= form.label :accommodation_hotel, 'Off-site accommodations' %>
+      <%= form.label :accommodation_hotel_false, class: "block mt-1" do %>
+        <%= form.radio_button :accommodation_hotel, false, data: { instant_target: 'input' } %>
+        Airbnb, friends, etc
+      <% end %>
+      <%= form.label :accommodation_hotel_true, class: "block mt-1" do %>
+        <%= form.radio_button :accommodation_hotel, true, data: { instant_target: 'input' } %>
+        Hotel
+      <% end %>
+      <% if @reservation.accommodation_hotel? %>
+        <div class="my-5">
+          <%= form.label :hotel_name, 'What is the name of the hotel?' %>
+          <%= form.text_field :hotel_name, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+        </div>
+      <% else %>
+        <%= form.hidden_field :hotel_name, value: '' %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+<div class="my-10">
+  <%= form.label :additional_comments, 'Any other comments?' %>
+  <%= form.text_area :additional_comments, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+</div>
