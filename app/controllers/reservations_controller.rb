@@ -44,19 +44,23 @@ class ReservationsController < ApplicationController
   # PATCH/PUT /reservation
   def update
     if @reservation.update(reservation_params)
-      if !@reservation.optional_completed?
-        @reservation.staying_onsite = @reservation.accommodation_cabin?
-        @reservation.meal_friday_dinner = @reservation.attending_friday?
-        @reservation.meal_saturday_breakfast = @reservation.attending_saturday?
-        @reservation.meal_saturday_lunch = @reservation.attending_saturday?
-        @reservation.meal_saturday_dinner = @reservation.attending_saturday?
-        @reservation.meal_saturday_snack = @reservation.attending_saturday?
-        @reservation.meal_sunday_brunch = @reservation.attending_sunday?
-        @reservation.save
+      if @reservation.attending?
+        if !@reservation.optional_completed?
+          @reservation.staying_onsite = @reservation.accommodation_cabin?
+          @reservation.meal_friday_dinner = @reservation.attending_friday?
+          @reservation.meal_saturday_breakfast = @reservation.attending_saturday?
+          @reservation.meal_saturday_lunch = @reservation.attending_saturday?
+          @reservation.meal_saturday_dinner = @reservation.attending_saturday?
+          @reservation.meal_saturday_snack = @reservation.attending_saturday?
+          @reservation.meal_sunday_brunch = @reservation.attending_sunday?
+          @reservation.save
 
-        redirect_to optional_survey_path, notice: "Thanks #{@reservation.first_name}. We've saved your RSVP!"
+          redirect_to optional_survey_path, notice: "Thanks #{@reservation.first_name}. We've saved your RSVP!"
+        else
+          redirect_to root_path, notice: "Thanks #{@reservation.first_name}, your RSVP is complete!"
+        end
       else
-        redirect_to root_path, notice: "Thanks #{@reservation.first_name}, your RSVP is complete!"
+        redirect_to root_path, notice: "Thanks for letting us know you won't be able to make it, #{@reservation.first_name}. Let us know before August 1st if anything changes."
       end
     else
       render :edit, status: :unprocessable_entity
