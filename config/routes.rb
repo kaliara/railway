@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resolve('Reservation') { [:reservation] }
   get '/reservation/edit/optional', to: 'reservations#edit', defaults: { optional: true }, as: :optional_survey
+  get '/reservation/activities/:old/:changed', to: 'reservations#update_activity_preference', as: :update_reservation_activity_preference
   patch '/reservation/preview', to: 'reservations#update_preview', as: :reservation_update_preview
   patch '/reservation/optional/preview', to: 'reservations#update_optional_preview', as: :reservation_update_optional_preview
   patch '/reservation/optional', to: 'reservations#update'

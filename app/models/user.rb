@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def create_instant_login_token
     update(instant_login_token: "#{SecureRandom.hex(4)}#{id}")
   end
+
+  def invite_names_display
+    invite_names || 'friends'
+  end
 end

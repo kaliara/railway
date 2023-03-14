@@ -267,14 +267,14 @@ a {text-decoration: none;}
                                                         <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
                                                                 <td align="center" style="padding:0;Margin:0">
-                                                                    <!--[if mso]><a href="<%= instant_login_url(token: @user.instant_login_token) %>" target="_blank" hidden>
-<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="<%= instant_login_url(token: @user.instant_login_token) %>"
+                                                                    <!--[if mso]><a href="<%= @magic_link %>" target="_blank" hidden>
+<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="<%= @magic_link %>"
 style="height:41px; v-text-anchor:middle; width:208px" arcsize="12%" stroke="f" fillcolor="#ab5c68">
 <w:anchorlock></w:anchorlock>
 <center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:15px; font-weight:400; line-height:15px; mso-text-raise:1px'>View card and RSVP</center>
 </v:roundrect></a>
 <![endif]-->
-                                                                    <!--[if !mso]><!-- --><span class="msohide es-button-border" style="border-style:solid;border-color:#ab5c68;color:#ab5c68;border-width:1px;display:inline-block;border-radius:5px;width:auto;mso-hide:all"><a href="<%= instant_login_url(token: @user.instant_login_token) %>" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;background:transparent;font-size:20px;line-height:1.2;;display:inline-block;color:#ab5c68;border-radius:5px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;padding:10px 20px 10px 20px;border-color:#ab5c68">View card and RSVP</a></span>
+                                                                    <!--[if !mso]><!-- --><span class="msohide es-button-border" style="border-style:solid;border-color:#ab5c68;color:#ab5c68;border-width:1px;display:inline-block;border-radius:5px;width:auto;mso-hide:all"><a href="<%= @magic_link %>" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;background:transparent;font-size:20px;line-height:1.2;;display:inline-block;color:#ab5c68;border-radius:5px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;padding:10px 20px 10px 20px;border-color:#ab5c68">View card and RSVP</a></span>
                                                                     <!--<![endif]-->
                                                                 </td>
                                                             </tr>
@@ -301,7 +301,9 @@ style="height:41px; v-text-anchor:middle; width:208px" arcsize="12%" stroke="f" 
                                                             <tr>
                                                                 <td align="center" style="padding:0;Margin:0">
                                                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;color:#333333;font-size:20px;line-height:1.4;">
+                                                                        <% if @user%>
                                                                         Dear <%= @user.invite_names_display %>,
+                                                                        <% end %>
                                                                     </p>
                                                                 </td>
                                                             </tr>
@@ -327,7 +329,7 @@ style="height:41px; v-text-anchor:middle; width:208px" arcsize="12%" stroke="f" 
                                                         <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
                                                                 <td align="center" style="padding:0;Margin:0;font-size:0px">
-                                                                    <a target="_blank" href="<%= instant_login_url(token: @user.instant_login_token) %>" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#ab5c68;font-size:14px">
+                                                                    <a target="_blank" href="<%= @magic_link %>" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#ab5c68;font-size:14px">
                                                                         <img class="adapt-img" src="<%= asset_url 'envelope.png' %>" alt="You're Invited" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="560" title="You're Invited">
                                                                     </a>
                                                                 </td>
@@ -390,14 +392,14 @@ style="height:41px; v-text-anchor:middle; width:208px" arcsize="12%" stroke="f" 
                                                         <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
                                                                 <td align="center" style="padding:0;Margin:0">
-                                                                    <!--[if mso]><a href="<%= instant_login_url(token: @user.instant_login_token) %>" target="_blank" hidden>
-<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="<%= instant_login_url(token: @user.instant_login_token) %>"
+                                                                    <!--[if mso]><a href="<%= @magic_link %>" target="_blank" hidden>
+<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="<%= @magic_link %>"
 style="height:41px; v-text-anchor:middle; width:208px" arcsize="12%" stroke="f" fillcolor="#ab5c68">
 <w:anchorlock></w:anchorlock>
 <center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:15px; font-weight:400; line-height:15px; mso-text-raise:1px'>View card and RSVP</center>
 </v:roundrect></a>
 <![endif]-->
-                                                                    <!--[if !mso]><!-- --><span class="msohide es-button-border" style="border-style:solid;border-color:#ab5c68;background:#ab5c68;border-width:0px;display:inline-block;border-radius:5px;width:auto;mso-hide:all"><a href="<%= instant_login_url(token: @user.instant_login_token) %>" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:20px;line-height:1.2;;display:inline-block;background:#ab5c68;border-radius:5px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;padding:10px 20px 10px 20px;border-color:#ab5c68">View card and RSVP</a></span>
+                                                                    <!--[if !mso]><!-- --><span class="msohide es-button-border" style="border-style:solid;border-color:#ab5c68;background:#ab5c68;border-width:0px;display:inline-block;border-radius:5px;width:auto;mso-hide:all"><a href="<%= @magic_link %>" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:20px;line-height:1.2;;display:inline-block;background:#ab5c68;border-radius:5px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;padding:10px 20px 10px 20px;border-color:#ab5c68">View card and RSVP</a></span>
                                                                     <!--<![endif]-->
                                                                 </td>
                                                             </tr>

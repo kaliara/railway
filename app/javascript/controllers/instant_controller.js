@@ -1,11 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-    static targets = ["form", "input"]
+    static targets = ["form", "input", "link"]
 
     connect() {
         const form = this.formTarget;
         const inputs = this.inputTargets;
+        const links = this.linkTargets;
         const formElements = form.querySelectorAll('input:not([type="submit"]), select, textarea')
         const submitButton = form.querySelector('[type="submit"][name="commit"]')
 
@@ -35,6 +36,23 @@ export default class extends Controller {
                             }
                         }
                     }
+                    form.querySelector('[name="instant"]').click()
+                })
+            })
+            links.forEach(link => {
+                ['mouseover', 'focus'].forEach(function(e) {
+                    link.addEventListener(e, function() {
+                        if (!form.action.includes('/preview')) {
+                            form.setAttribute('action', form.action.concat('/preview'))
+                        }
+                    })
+                });
+
+                link.addEventListener("click", function(e) {
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open("GET", link.href, false);
+                    xmlHttp.send(null);
+                    e.preventDefault();
                     form.querySelector('[name="instant"]').click()
                 })
             })

@@ -31,11 +31,7 @@
     <% end %>
     <%= form.label :meal_saturday_dinner, class: "block mt-1" do %>
       <%= form.check_box :meal_saturday_dinner, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
-      <strong class="font-semibold">Saturday reception dinner</strong> <span class="text-xs text-gray-500 mt-1 mb-3">(5:30pm)</span>
-    <% end %>
-    <%= form.label :meal_saturday_snack, class: "block mt-1" do %>
-      <%= form.check_box :meal_saturday_snack, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
-      Saturday late-night snack <span class="text-xs text-gray-500 mt-1 mb-3">(10pm)</span>
+      <strong class="font-semibold">Saturday reception</strong> <span class="text-xs text-gray-500 mt-1 mb-3">(5:30pm)</span>
     <% end %>
     <%= form.label :meal_sunday_brunch, class: "block mt-1" do %>
       <%= form.check_box :meal_sunday_brunch, data: { instant_target: 'input' }, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
@@ -124,6 +120,31 @@
     </div>
   <% end %>
 <% end %>
+<div class="my-10">
+  <%= form.label :activities, 'Please put these activities in order of preference' %>
+  <div class="text-xs text-gray-500 mt-1 mb-3">Most interested at the top</div>
+  <div class="mt-4 divide-y divide-pink-700/25 border-t border-b border-gray-200">
+    <table class="w-full" cellpadding="0" cellspacing="0">
+      <% @reservation.activity_preferences.each_with_index do |activity, index| %>
+        <% key, values = activity %>
+        <tr>
+          <td class="border-pink-600/20 py-2 text-sm pr-3 whitespace-nowrap" style="border-top-width: 1px; border-top-style: solid;">
+            <%= values[:position] %>. <%= values[:name] %>
+          </td>
+          <td class="border-pink-600/20 py-2 text-sm text-right" style="border-top-width: 1px; border-top-style: solid;">
+            <%= link_to update_reservation_activity_preference_path(old: values[:position], changed: values[:position] - 1), data: { instant_target: 'link' }, class: "#{'opacity-40 pointer-events-none' if index == 0} bg-transparent transition-none md:hover:bg-pink-600 md:hover:text-white rounded-md border border-pink-600 text-pink-600 font-bold outline-none no-underline ml-2 inline-block py-1 px-2", style: "border-width: 1px; border-style: solid;" do %>
+              &uarr;
+            <% end %>
+            <%= link_to update_reservation_activity_preference_path(old: values[:position], changed: values[:position] + 1), data: { instant_target: 'link' }, class: "#{'opacity-40 pointer-events-none' if index == @reservation.activity_preferences.size - 1} bg-transparent transition-none md:hover:bg-pink-600 md:hover:text-white rounded-md border border-pink-600 text-pink-600 font-bold outline-none no-underline ml-2 inline-block py-1 px-2", style: "border-width: 1px; border-style: solid;" do %>
+              &darr;
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
 <div class="my-10">
   <%= form.label :additional_comments, 'Any other comments?' %>
   <%= form.text_area :additional_comments, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>

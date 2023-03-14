@@ -184,6 +184,12 @@ body {
     background-color: #FFFFFF;
 }
 
+@media (max-width: 360px) {
+    .bg {
+        display: none;
+    }
+}
+
 body:after {
     background-color: #DEE2E5;
     content: '';

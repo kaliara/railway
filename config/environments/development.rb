@@ -61,6 +61,7 @@ Rails.application.configure do
   config.assets.quiet = true
 
   config.action_mailer.default_url_options = {host: "kaliara.ngrok.io", protocol: 'https'}
+  config.action_mailer.asset_host = "https://kaliara.ngrok.io"
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true

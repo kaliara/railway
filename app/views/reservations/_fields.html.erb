@@ -19,11 +19,11 @@
   <%= form.label :attending, 'Are you attending?' %>
   <%= form.label :attending_true, class: "block my-2" do %>
     <%= form.radio_button :attending, true, data: { instant_target: 'input' } %>
-    Yes, I/we will be there celebrating
+    Yes, will be there celebrating
   <% end %>
   <%= form.label :attending_false, class: "block my-2" do %>
     <%= form.radio_button :attending, false, data: { instant_target: 'input' } %>
-    No, but I/we will be there in spirit
+    No, but will be there in spirit
   <% end %>
 </div>
 
@@ -31,7 +31,7 @@
   <div class="my-10 flex flex-col sm:grid sm:grid-cols-12">
     <div class="col-span-1">
       <%= form.label :you, 'You' %>
-      <%= form.text_field :you, value: 1, readonly: true, disabled: true, class: "block shadow bg-gray-100 rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+      <%= form.text_field :you, value: 1, readonly: true, disabled: true, class: "opacity-100 block shadow bg-gray-100 rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
     </div>
 
     <div class="col-span-1 pt-3 md:pt-9 text-center">
@@ -66,7 +66,7 @@
       <%= form.label :total_party, class: "block" do %>
         Total party
       <% end %>
-      <%= form.text_field :you, value: reservation.party_size, readonly: true, disabled: true, class: "block shadow bg-gray-100 rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+      <%= form.text_field :you, value: reservation.party_size, readonly: true, disabled: true, class: "opacity-100 block shadow bg-gray-100 rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
     </div>
   </div>
 

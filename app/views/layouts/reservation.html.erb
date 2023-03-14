@@ -31,7 +31,7 @@
             </div>
         <% end %>
         <% if !flash[:notice].blank? %>
-            <div class="rounded-md bg-green-600 py-3 px-6 my-4 max-w-3xl mx-auto">
+            <div class="rounded-md bg-green-600 py-3 px-6 my-4 mx-2 max-w-3xl md:mx-auto">
                 <div class="text-md text-white">
                     <%= flash[:notice] %>
                 </div>
@@ -39,9 +39,10 @@
         <% end %>
         <% if !params[:optional] %>
             <div class="w-[47rem] max-w-full relative">
-                <div class="relative mx-[10%] pt-3 pb-0 md:pt-5 px-5 md:px-12 z-20 text-base md:text-base text-center text-gray-900" xstyle="background: linear-gradient(180deg, rgba(255,255,255,1) 83%, rgba(255,255,255,0) 69%)">
+                <div class="relative mx-[10%] pt-3 pb-2 md:pt-5 px-5 md:px-12 z-20 text-base md:text-base text-center text-gray-900" xstyle="background: linear-gradient(180deg, rgba(255,255,255,1) 83%, rgba(255,255,255,0) 69%)">
                     <div class="bg-yellow-200 absolute top-0 left-0 right-0 bottom-[30px] md:bottom-[70px] -z-[1]"></div>
                     <div class="absolute -z-[2] top-0 left-0 right-0 bottom-[50px] md:bottom-[110px] xmin-h-[300px] xmd:min-h-[625px]" style="box-shadow: 0 1px 13px 0 rgb(0 0 0 / 10%);"></div>
+                    <p class="text-sm md:text-base">Dear <%= current_user.invite_names_display %>,</p>
                     <p class="text-lg md:text-2xl my-4 font-serif italic leading-5">Elyse Dolde<br>&<br>Matthew Kaliara</p>
                     <p class="text-sm md:text-base">and their families invite you to join them for their wedding weekend full of fun, food, and festivities.</p>
                     <div class="flex mt-7 md:mt-10 text-sm md:text-base">
@@ -76,8 +77,8 @@
                         </div>
                     </div>
                     <p class="mt-1 text-sm md:text-base font-semibold">Ceremony at 4pm</p>
-                    <p class="mt-6 md:mt-10 text-sm md:text-base">Held at Camp Schodack &bull; Nassau, NY</p>
-                    <%= link_to 'RSVP Now', '#reservation_form', class: "rounded-lg mt-2 py-3 px-5 bg-pink-600 hover:bg-pink-700 border-pink-600 text-white inline-block font-medium cursor-pointer" %>
+                    <p class="mt-6 md:mt-10 text-sm md:text-base">Held at Camp Schodack <br>40 Krouner Rd, Nassau, NY</p>
+                    <%= link_to 'RSVP Now', '#reservation_form', class: "rounded-lg mt-2 mb-2 py-3 px-5 bg-pink-600 hover:bg-pink-700 border-pink-600 text-white inline-block font-medium cursor-pointer" %>
                     <p class="mt-3 md:mt-4 text-sm text-gray-500">
                         Please RSVP below by
                         <span class="hidden md:inline">August</span>

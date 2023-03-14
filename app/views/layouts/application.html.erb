@@ -31,7 +31,7 @@
             </div>
         <% end %>
         <% if !flash[:notice].blank? %>
-            <div class="rounded-md bg-green-600 py-3 px-6 my-4 max-w-3xl mx-auto">
+            <div class="rounded-md bg-green-600 py-3 px-6 my-4 mx-2 max-w-3xl md:mx-auto">
                 <div class="text-md text-white">
                     <%= flash[:notice] %>
                 </div>
@@ -69,7 +69,16 @@
                                   <li class="number days">
                                     <div class="item">
                                       <span class="digit count3 text-[60px] md:text-[85px]">
-                                        <span class="component" style="line-height: 92px; height: 92px;"><%= (Date.new(2023,9,23) - Date.today).to_i %> days!</span>
+                                        <span class="component" style="line-height: 92px; height: 92px;">
+                                            <% wedding_day = Time.new(2023,9,23,16,0) %>
+                                            <% if Time.now > wedding_day %>
+                                                Sep 23, 2023
+                                            <% elsif ((wedding_day - Time.now).round / 1.hours) < 48  %>
+                                                <%= (wedding_day - Time.now).round / 1.hours %> hours!
+                                            <% else %>
+                                                <%= ((wedding_day - Time.now).ceil / 1.days) + 1 %> days!
+                                            <% end %>
+                                        </span>
                                       </span>
                                     </div>
                                   </li>
