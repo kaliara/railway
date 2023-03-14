@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-    static targets = ["form", "input", "link"]
+    static targets = ["form", "input", "stepper", "link"]
 
     connect() {
         const form = this.formTarget;
@@ -204,5 +204,30 @@ export default class extends Controller {
         // }
 
         // setup();
+    }
+
+    updatePartySize() {
+        const steppers = this.stepperTargets
+        const guestContainer = document.querySelector('[data-guests]')
+        let partySize = 1;
+
+        steppers.forEach(stepper => {
+            const guests = stepper.value || 0
+            partySize += parseInt(guests);
+        })
+        document.querySelectorAll('[data-party]').forEach(element => {
+            if (element) {
+                if (element.value) {
+                    element.value = partySize
+                } else {
+                    element.innerHTML = partySize - 1
+                }
+            }
+        })
+        if (partySize > 1) {
+            guestContainer.style.display = 'block'
+        } else {
+            guestContainer.style.display = 'none'
+        }
     }
 }

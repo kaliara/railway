@@ -1,9 +1,9 @@
-<h1 class="font-normal text-3xl mb-12" id="reservation_form">Wedding Details</h1>
+<h1 class="font-normal text-3xl mb-12" id="reservation_form">Details</h1>
 <div class="text-sm leading-relaxed text-gray-900/80">
   <p class="bg-yellow-100 text-xs inline-block font-semibold leading-relaxed text-yellow-700 px-4 py-2 rounded">Note: this section may be updated with additional details as we get closer.</p>
   <ul>
       <li>
-          <h2 class="text-xl mt-8 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Schedule</h2>
+          <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Schedule</h2>
           <p>You are welcome to join for as much or as little of the weekend as you would like, whether you are staying on or off-site.</p>
           <table class="w-full mt-4" cellpadding="0" cellspacing="0">
             <tr>
@@ -61,13 +61,28 @@
           </table>
       </li>
       <li>
-          <h2 class="text-xl mt-8 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Attire</h2>
+          <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Location</h2>
+          <ul>
+              <li>
+                The entire wedding weekend will be held at a summer camp in New York.
+                <br>
+                <br>
+                <strong class="font-bold text-gray-900">Camp Schodack: 40 Krouner Rd, Nassau, NY 12123</strong>
+                <br><%= link_to 'Google Maps', "https://goo.gl/maps/eEmSSHqPP4aB6FZn7", class: "text-pink-600 hover:text-pink-800", target: "_blank" %>
+                <br>
+                <br>
+                If needed, you can reach the camp by phone: <a href="tel:(781)444-5520">(781) 444-5520</a>
+            </li>
+          </ul>
+      </li>
+      <li>
+          <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Attire</h2>
           <ul>
               <li>Since having absolutely no guidance on this may induce anxiety, think of the wedding ceremony and reception as dressy but not formal. The internet seems to call this Dressy Casual or Semi-Formal.</li>
           </ul>
       </li>
       <li>
-          <h2 class="text-xl mt-8 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Lodging</h2>
+          <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Lodging</h2>
           <ul>
               <li class="mt-4"><strong class="font-bold">Cabins on-site</strong>
                   <ul class="list-disc mx-4">
@@ -99,13 +114,16 @@
           </ul>
       </li>
       <li>
-          <h2 class="text-xl mt-8 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Parking</h2>
+          <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Parking</h2>
           <ul>
-              <li>Parking is available in the main parking lot near the Welcome Center. If the main lot fills up, there will be camp staff available to direct guests to an overflow lot. Both <%= link_to 'parking lots are shown on the map', map_path, target: '_blank', class: 'text-pink-600 hover:text-pink-800' %>.</li>
+              <li>
+              Parking is available in the main parking lot near the Welcome Center. If the main lot fills up, there will be camp staff available to direct guests to an overflow lot.
+              <%# Both <%= link_to 'parking lots are shown on the map', map_path, target: '_blank', class: 'text-pink-600 hover:text-pink-800' %>
+            </li>
           </ul>
       </li>
       <li>
-          <h2 class="text-xl mt-8 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Getting around the camp</h2>
+          <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Getting around the camp</h2>
           <ul class="list-disc mx-4">
               <li>The cabins are within walking distance of all activities and event areas.</li>
               <li>There are golf carts available to pick you up and drop you off if needed as well as to move your luggage to and from cabins.</li>
@@ -113,7 +131,7 @@
           </ul>
       </li>
       <li>
-          <h2 class="text-xl mt-8 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Meals</h2>
+          <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Meals</h2>
           <ul class="list-disc mx-4">
               <li class="mt-4">The following meals will be provided:
               <ul class="list-[circle] mx-4">
@@ -125,57 +143,57 @@
                       <li>Sunday brunch</li>
                   </ul>
               </li>
-              <li class="mt-4">You will not need to select food choices ahead of time. Meals are served buffet-style with several options.&nbsp;</li>
+              <li class="mt-4">Meals are served buffet-style with several options.&nbsp;</li>
               <li>Please let us know <%= link_to 'which meals you plan to join and any allergies or dietary preferences', optional_survey_path, class: 'text-pink-600 hover:text-pink-800' %> by <span class="whitespace-nowrap">August 1st.</span></li>
           </ul>
       </li>
       <li>
-          <h2 class="text-xl mt-8 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Activities</h2>
+          <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Activities</h2>
           <ul>
               <li>These activities are available at any time throughout the weekend:
               <ul class="list-[circle] mx-4">
-                      <li>Gymnastics and tumbling area for kids (LINK)</li>
-                      <li>Indoor and outdoor basketball</li>
+                      <li><%= link_to 'Gymnastics and tumbling area for kids', asset_url('gym.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
+                      <li><%= link_to 'Indoor and outdoor basketball', asset_url('new-IMG_5364.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
                       <li>Indoor and outdoor volleyball</li>
                       <li>Game room (with table tennis, air hockey, board games, and more)</li>
                       <li>Tetherball</li>
-                      <li>Tennis</li>
+                      <li><%= link_to 'Tennis', asset_url('56b24d77_original.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
                       <li>Hiking trails</li>
                   </ul>
               </li>
               <li class="mt-4">Some activities require camp staff and are available at specific times (we'll pick a few based <%= link_to 'how you vote', optional_survey_path, class: 'text-pink-600 hover:text-pink-800' %>):
               <ul class="list-[circle] mx-4">
-                      <li>Swimming pool</li>
-                      <li>Zipline</li>
-                      <li>Climbing wall</li>
-                      <li>Go-karts</li>
+                      <li><%= link_to 'Swimming pool', asset_url('b6d58147_original.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
+                      <li><%= link_to 'Zipline', asset_url('new-8O8A1483.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
+                      <li><%= link_to 'Climbing wall', asset_url('060bdfde_original.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
+                      <li><%= link_to 'Go-karts', asset_url('new-8O8A1671.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
                       <li>Archery</li>
-                      <li>Slip-n-slide</li>
+                      <li><%= link_to 'Slip-n-slide', asset_url('80ed90e0_original.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
                   </ul>
               </li>
           </ul>
       </li>
       <li>
-          <h2 class="text-xl mt-8 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Pets</h2>
+          <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Pets</h2>
           <ul>
               <li>The camp does not allow pets, unfortunately. However, the hotel we recommend above does allow pets.</li>
           </ul>
       </li>
       <li>
-          <h2 class="text-xl mt-8 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Cell signal and Wi-fi</h2>
+          <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Cell signal and Wi-fi</h2>
           <ul>
               <li>The camp has good coverage for AT&amp;T and Verizon, with spottier service for T-mobile. Wi-fi is available in the Welcome Center and Dining Hall, but not throughout the campgrounds.</li>
           </ul>
       </li>
       <li>
-          <h2 class="text-xl mt-8 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Smoking</h2>
+          <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Smoking</h2>
           <ul class="list-disc mx-4">
               <li>Smoking is not allowed in and around the cabins.</li>
               <li>Designated smoking areas: bonfire pit, blacktop by the Dining Hall.</li>
           </ul>
       </li>
       <li>
-          <h2 class="text-xl mt-8 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">What you will need:</h2>
+          <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">What you will need:</h2>
           <ul class="list-disc mx-4">
               <li>Towels for showering and for swimming</li>
               <li>Bed linens if you are staying in the cabins (not required, but appreciated!)
@@ -185,10 +203,10 @@
                       <li>If you ARE bringing linens, please <%= link_to 'let us know', optional_survey_path, class: 'text-pink-600 hover:text-pink-800' %> by August 1st.</li>
                   </ul>
               </li>
-              <li>Bathing suits if you want to swim or use the slip n&rsquo; slide (LINK)</li>
+              <li>Bathing suits if you want to swim or use the <%= link_to '300 foot slip-n-slide', asset_url('80ed90e0_original.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
               <li>Warm layers for chilly evenings by the fire</li>
               <li>Toiletries</li>
-              <li>Raincoat and umbrella (just to ensure that these won&rsquo;t be necessary)</li>
+              <li>Raincoat and/or umbrella (just to ensure that these won&rsquo;t be necessary)</li>
               <li>Clothes to play in</li>
               <li>Spiffy clothes</li>
               <li>Bug spray</li>

@@ -274,7 +274,7 @@ style="height:41px; v-text-anchor:middle; width:208px" arcsize="12%" stroke="f" 
 <center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:15px; font-weight:400; line-height:15px; mso-text-raise:1px'>View card and RSVP</center>
 </v:roundrect></a>
 <![endif]-->
-                                                                    <!--[if !mso]><!-- --><span class="msohide es-button-border" style="border-style:solid;border-color:#ab5c68;color:#ab5c68;border-width:1px;display:inline-block;border-radius:5px;width:auto;mso-hide:all"><a href="<%= instant_login_url(token: @user.instant_login_token) %>" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;background:transparent;font-size:20px;line-height:1.2;;display:inline-block;color:#ab5c68;border-radius:5px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;padding:10px 20px 10px 20px;border-color:#ab5c68">View card and RSVP</a></span>
+                                                                    <!--[if !mso]><!-- --><span class="msohide es-button-border" style="border-style:solid;border-color:#ab5c68;color:#ab5c68;border-width:1px;display:inline-block;border-radius:5px;width:auto;mso-hide:all"><a href="<%= instant_login_url(token: @user.instant_login_token) %>" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;background:transparent;font-size:14px;line-height:1.2;;display:inline-block;color:#ab5c68;border-radius:5px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:18px;width:auto;text-align:center;padding:6px 12px 6px 12px;border-color:#ab5c68">View card and RSVP</a></span>
                                                                     <!--<![endif]-->
                                                                 </td>
                                                             </tr>
@@ -432,6 +432,7 @@ style="height:41px; v-text-anchor:middle; width:208px" arcsize="12%" stroke="f" 
                             </td>
                         </tr>
                     </table>
+                    <img src='https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/users/<%= @user.id %>/view_invite.png' />
                 </td>
             </tr>
         </table>

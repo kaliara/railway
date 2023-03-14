@@ -30,6 +30,13 @@
                 <%= link_to 'Log out', users.sign_out_path, class: 'text-pink-600 hover:text-pink-800 font-medium' %>
             </div>
         <% end %>
+        <% if !flash[:alert].blank? %>
+            <div class="rounded-md bg-amber-600 py-3 px-6 my-4 mx-2 max-w-3xl md:mx-auto">
+                <div class="text-md text-white">
+                    <%= flash[:alert] %>
+                </div>
+            </div>
+        <% end %>
         <% if !flash[:notice].blank? %>
             <div class="rounded-md bg-green-600 py-3 px-6 my-4 mx-2 max-w-3xl md:mx-auto">
                 <div class="text-md text-white">

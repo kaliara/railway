@@ -14,6 +14,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def view_invite
+    @user = User.find(params[:id])
+    @user.update(viewed_invite: true)
+
+    respond_to do |format|
+      format.png {
+        pixel = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAFoEvQfAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWP4DwQACfsD/Qy7W+cAAAAASUVORK5CYII="
+        send_data Base64.decode64(pixel), type: 'image/png', disposition: 'inline'
+      }
+    end
+  end
+
 
   private
 

@@ -1,7 +1,13 @@
 <% if reservation.attending? %>
   <% if @reservation.party_size > 1 %>
-    <div class="my-10">
-      <%= form.label :guest_names, "#{'Name'.pluralize(@reservation.party_size - 1)} of the #{pluralize @reservation.party_size - 1, 'guest'} in your party" %>
+    <div class="my-10" data-guests="">
+      <%= form.label :guest_names do %>
+        <%= 'Name'.pluralize(@reservation.party_size - 1) %>
+        of the
+        <span data-party=""><%= @reservation.party_size - 1 %></span>
+        <%= 'guest'.pluralize @reservation.party_size - 1 %>
+        in your party
+      <% end %>
       <%= form.text_field :guest_names, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
     </div>
   <% else %>

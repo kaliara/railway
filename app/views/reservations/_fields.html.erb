@@ -42,7 +42,7 @@
       <%= form.label :guests_adults do %>
         Adult guests
       <% end %>
-      <%= form.number_field :guests_adults, class: "block shadow bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+      <%= form.number_field :guests_adults, min: 0, data: { instant_target: 'stepper', action: 'change->instant#updatePartySize' }, class: "block shadow bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
       <div class="text-xs text-gray-500">excluding you</div>
     </div>
 
@@ -54,7 +54,7 @@
       <%= form.label :guests_children do %>
         Child guests
       <% end %>
-      <%= form.number_field :guests_children, class: "block shadow bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+      <%= form.number_field :guests_children, min: 0, data: { instant_target: 'stepper', action: 'change->instant#updatePartySize' }, class: "block shadow bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
       <div class="text-xs text-gray-500">18 or under</div>
     </div>
 
@@ -66,7 +66,7 @@
       <%= form.label :total_party, class: "block" do %>
         Total party
       <% end %>
-      <%= form.text_field :you, value: reservation.party_size, readonly: true, disabled: true, class: "opacity-100 block shadow bg-gray-100 rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+      <%= form.text_field :you, value: reservation.party_size, data: { party: true }, readonly: true, disabled: true, class: "opacity-100 block shadow bg-gray-100 rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
     </div>
   </div>
 

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   patch '/reservation/full', to: 'reservations#update'
 
   get '/instant_login/:token', to: 'sessions#create', as: :instant_login
+  get '/users/:id/view_invite', to: 'users#view_invite', as: :view_invite, defaults: { format: '.hit' }
   get '/map', to: 'home#map', as: :map
 
   root "home#index"

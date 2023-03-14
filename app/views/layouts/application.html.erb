@@ -30,6 +30,13 @@
                 <%= link_to 'Log out', users.sign_out_path, class: 'text-pink-600 hover:text-pink-800 font-medium' %>
             </div>
         <% end %>
+        <% if !flash[:alert].blank? %>
+            <div class="rounded-md bg-amber-600 py-3 px-6 my-4 mx-2 max-w-3xl md:mx-auto">
+                <div class="text-md text-white">
+                    <%= flash[:alert] %>
+                </div>
+            </div>
+        <% end %>
         <% if !flash[:notice].blank? %>
             <div class="rounded-md bg-green-600 py-3 px-6 my-4 mx-2 max-w-3xl md:mx-auto">
                 <div class="text-md text-white">
@@ -85,7 +92,7 @@
                                 </ul>
                               </div>
                               <hr id="divider04" />
-                              <p id="text25" class="style2"><span class="p">Date &amp; Time: <strong>September 23, 2023 @ 4PM</strong><br> Location: <strong><a href="https://g.page/campschodack1957?share">Camp Schodack in Nassau, NY</a></strong></span></p>
+                              <p id="text25" class="style2"><span class="p">Date &amp; Time: <strong>September 23, 2023 @ 4PM</strong><br> Location: <strong><a href="https://g.page/campschodack1957?share">Camp Schodack at 40 Krouner Rd, Nassau, NY 12123</a></strong></span></p>
                           </div>
                       </div>
                   </div>
@@ -134,7 +141,7 @@
                                           </li>
                                           <li>
                                               <%= link_to asset_url('80ed90e0_original.jpg'), class: 'thumbnail', target: '_blank' do %>
-                                                  <span class="frame"><%= image_tag '80ed90e0_original.jpg', alt: 'Waterslide' %></span>
+                                                  <span class="frame"><%= image_tag '80ed90e0_original.jpg', alt: 'Slip-n-slide' %></span>
                                                   <% end %>
                                           </li>
                                           <li>
@@ -167,8 +174,52 @@
                                                   <span class="frame"><%= image_tag 'c32fcfc7_original.jpg', alt: 'Patio' %></span>
                                                   <% end %>
                                           </li>
+                                          <li>
+                                            <%= link_to asset_url('new-8O8A1483.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                <span class="frame"><%= image_tag 'new-8O8A1483.jpg', alt: 'Zip line' %></span>
+                                            <% end %>
+                                          </li>
+                                          <li>
+                                            <%= link_to asset_url('new-8O8A1908.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                <span class="frame"><%= image_tag 'new-8O8A1908.jpg', alt: 'Camp' %></span>
+                                            <% end %>
+                                          </li>
+                                          <li>
+                                            <%= link_to asset_url('new-8O8A1671.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                <span class="frame"><%= image_tag 'new-8O8A1671.jpg', alt: 'Go Karts' %></span>
+                                            <% end %>
+                                          </li>
+                                          <li>
+                                            <%= link_to asset_url('new-8O8A1934.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                <span class="frame"><%= image_tag 'new-8O8A1934.jpg', alt: 'Camp' %></span>
+                                            <% end %>
+                                          </li>
+                                          <li>
+                                            <%= link_to asset_url('new-8O8A1966.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                <span class="frame"><%= image_tag 'new-8O8A1966.jpg', alt: 'Sports garden' %></span>
+                                            <% end %>
+                                          </li>
+                                          <li>
+                                            <%= link_to asset_url('new-IMG_5364.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                <span class="frame"><%= image_tag 'new-IMG_5364.jpg', alt: 'Basketball courts' %></span>
+                                            <% end %>
+                                          </li>
+                                          <li>
+                                            <%= link_to asset_url('new-IMG_5450.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                <span class="frame"><%= image_tag 'new-IMG_5450.jpg', alt: 'Camp' %></span>
+                                            <% end %>
+                                          </li>
+                                          <li>
+                                            <%= link_to asset_url('gym.jpg'), class: 'thumbnail', target: '_blank' do %>
+                                                <span class="frame"><%= image_tag 'gym.jpg', alt: 'Kids gym' %></span>
+                                            <% end %>
+                                          </li>
                                       </ul>
                                   </div>
+                              </div>
+                              <div class="w-full">
+                                <p class="mb-4">The map below can be used to get a general sense of the size and amenities of the camp. An updated map will be added with wedding specific labeling soon!</p>
+                                <%= image_tag 'map-v0', alt: 'map' %>
                               </div>
                           </div>
                       </div>

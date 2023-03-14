@@ -6,6 +6,6 @@ class InviteMailer < ApplicationMailer
   }
 
   def new_invite_email
-    mail(subject: "(ADMIN) new account sign up")
+    mail(subject: "You're invited to Elyse & Matthew's wedding weekend!")
   end
 end
