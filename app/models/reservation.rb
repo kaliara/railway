@@ -10,7 +10,7 @@ class Reservation < ApplicationRecord
   end
 
   def cabin_own_linens_discrete?
-    cabin_own_linens == 'none' || cabin_own_linens == 'all'
+    cabin_own_linens == 'no' || cabin_own_linens == 'all'
   end
 
   def cabin_own_linens_display_value

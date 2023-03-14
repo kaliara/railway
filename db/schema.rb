@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_14_014650) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_14_040533) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_014650) do
     t.boolean "accommodation_hotel", default: false
     t.string "cabin_number"
     t.string "cabin_mate_request"
-    t.string "cabin_own_linens", default: "false"
+    t.string "cabin_own_linens", default: "no"
     t.string "hotel_name"
     t.boolean "designated_driver_plan", default: false
     t.string "food_allergies"
