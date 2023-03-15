@@ -1,11 +1,11 @@
 class InviteMailer < ApplicationMailer
-  default from: "matthew@kaliara", template_path: 'mailers/invite'
+  default from: "Matthew and Elyse <matthew@kaliara>", template_path: 'mailers/invite'
 
   before_action {
     @user = params[:user]
   }
 
   def new_invite_email
-    mail(subject: "You're invited to Elyse & Matthew's wedding weekend!")
+    mail(to: @user.email, subject: "You're invited to Elyse & Matthew's wedding weekend!")
   end
 end
