@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_14_182111) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_16_014151) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,7 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_182111) do
     t.boolean "attending_friday", default: false
     t.boolean "attending_saturday", default: false
     t.boolean "attending_sunday", default: false
-    t.boolean "staying_onsite", default: false
+    t.boolean "staying_onsite", default: true
     t.boolean "accommodation_rv", default: false
     t.boolean "accommodation_tent", default: false
     t.boolean "accommodation_cabin", default: false
@@ -69,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_182111) do
     t.integer "activity_preference_paint_night", default: 5
     t.integer "activity_preference_archery", default: 6
     t.integer "activity_preference_zipline", default: 7
+    t.boolean "accommodation_camper", default: false
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
@@ -79,6 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_182111) do
     t.string "instant_login_token"
     t.string "invite_names"
     t.boolean "viewed_invite", default: false
+    t.boolean "guest_of_elyse", default: true
   end
 
   add_foreign_key "reservations", "users"

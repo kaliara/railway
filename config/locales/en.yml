@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  passwordless:
+    mailer:
+      subject: "You're invited to Elyse & Matthew's wedding weekend"

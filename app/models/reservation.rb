@@ -27,7 +27,7 @@ class Reservation < ApplicationRecord
 
   def activity_preferences
     {
-      activity_preference_paint_night: { name: 'Paint Night', position: activity_preference_paint_night},
+      activity_preference_paint_night: { name: 'Arts and Crafts', position: activity_preference_paint_night},
       activity_preference_archery: { name: 'Archery', position: activity_preference_archery},
       activity_preference_climbing_wall: { name: 'Climbing Wall', position: activity_preference_climbing_wall},
       activity_preference_gokarts: { name: 'Go-karts', position: activity_preference_gokarts},

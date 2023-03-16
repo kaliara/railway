@@ -1,4 +1,4 @@
-Passwordless.default_from_address = "Kaliara/Dolde Wedding <wedding@kaliara.com>"
+Passwordless.default_from_address = "Elyse and Matthew <matthew@kaliara.com>"
 Passwordless.token_generator = -> (session) {
   [SecureRandom.base58(7), Date.today.yday].join
 }

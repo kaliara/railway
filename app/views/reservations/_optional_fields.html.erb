@@ -46,14 +46,32 @@
   </div>
   <% if !@reservation.accommodation_cabin? %>
     <div class="my-10">
-      <%= form.label :staying_onsite, 'Are you planning to stay off-site in a hotel or Airbnb?' %>
-      <%= form.label :staying_onsite_true, class: "block mt-1" do %>
-        <%= form.radio_button :staying_onsite, true, data: { instant_target: 'input' } %>
-        No
-      <% end %>
+      <%= form.label :staying_onsite, 'Are you planning to stay on-site in your own RV, camper, or tent?' %>
+      <div class="flex">
+        <%= form.label :staying_onsite_true, class: "block mt-1" do %>
+          <%= form.radio_button :staying_onsite, true, data: { instant_target: 'input' } %>
+          Yes
+        <% end %>
+        <% if @reservation.staying_onsite? %>
+          <div class="flex space-x-6 ml-8">
+            <%= form.label :accommodation_rv, class: "block mt-1" do %>
+              <%= form.check_box :accommodation_rv, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
+              RV
+            <% end %>
+            <%= form.label :accommodation_camper, class: "block mt-1" do %>
+              <%= form.check_box :accommodation_camper, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
+              Camper
+            <% end %>
+            <%= form.label :accommodation_tent, class: "block mt-1" do %>
+              <%= form.check_box :accommodation_tent, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
+              Tent
+            <% end %>
+          </div>
+        <% end %>
+      </div>
       <%= form.label :staying_onsite_false, class: "block mt-1" do %>
         <%= form.radio_button :staying_onsite, false, data: { instant_target: 'input' } %>
-        Yes
+        No
       <% end %>
     </div>
   <% end %>
@@ -88,42 +106,11 @@
           </div>
         <% end %>
       </div>
-    <% else %>
-      <div class="my-10">
-        <%= form.label 'Do you plan to stay on-site but bring your own text, camper, or RV?' %>
-        <%= form.label :accommodation_tent, class: "block mt-1" do %>
-          <%= form.check_box :accommodation_tent, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
-          Tent
-        <% end %>
-        <%= form.label :accommodation_rv, class: "block mt-1" do %>
-          <%= form.check_box :accommodation_rv, class: "h-4 w-4 rounded border-gray-300 text-pink-600 focus:ring-pink-60" %>
-          RV or camper
-        <% end %>
-      </div>
     <% end %>
   <% else %>
     <%= form.hidden_field :accommodation_tent, value: false %>
     <%= form.hidden_field :accommodation_rv, value: false %>
-
-    <div class="my-10">
-      <%= form.label :accommodation_hotel, 'Off-site accommodations' %>
-      <%= form.label :accommodation_hotel_false, class: "block mt-1" do %>
-        <%= form.radio_button :accommodation_hotel, false, data: { instant_target: 'input' } %>
-        Airbnb, friends, etc
-      <% end %>
-      <%= form.label :accommodation_hotel_true, class: "block mt-1" do %>
-        <%= form.radio_button :accommodation_hotel, true, data: { instant_target: 'input' } %>
-        Hotel
-      <% end %>
-      <% if @reservation.accommodation_hotel? %>
-        <div class="my-5">
-          <%= form.label :hotel_name, 'What is the name of the hotel?' %>
-          <%= form.text_field :hotel_name, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
-        </div>
-      <% else %>
-        <%= form.hidden_field :hotel_name, value: '' %>
-      <% end %>
-    </div>
+    <%= form.hidden_field :accommodation_camper, value: false %>
   <% end %>
   <div class="my-10">
     <%= form.label :activities, 'Please put these activities in order of preference' %>

@@ -13,14 +13,16 @@
           <%= pluralize @reservation.party_size, 'person' %>
           <% if @reservation.accommodation_cabin? %>
             staying on-site in the cabins.
-          <% elsif @reservation.accommodation_rv? %>
-            staying on-site in your RV or camper.
-          <% elsif @reservation.accommodation_tent? %>
-            staying on-site in your tent.
-          <% elsif @reservation.accommodation_hotel? %>
-            staying off-site at a hotel<%= " (#{@reservation.hotel_name})" unless @reservation.hotel_name.blank? %>.
+          <% elsif @reservation.accommodation_rv? || @reservation.accommodation_camper? || @reservation.accommodation_tent? %>
+            <%
+              accommodation = []
+              accommodation << 'RV' if @reservation.accommodation_rv?
+              accommodation << 'camper' if @reservation.accommodation_camper?
+              accommodation << 'tent' if @reservation.accommodation_tent?
+            %>
+            staying on-site in your <%= accommodation.to_sentence %>.
           <% else %>
-            staying off site.
+            staying off-site.
           <% end %>
         </strong>
       <% else %>
@@ -35,7 +37,7 @@
   <%= form_for @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: 'false' } do |form| %>
     <div class="flex flex-col space-y-4">
       <div class="">
-        <p>Enter your email and we will send you a link to login to your profile.</p>
+        <p>Enter your email and we will send you a link to access your RSVP.</p>
       </div>
       <div class="my-5">
         <%= form.text_field :email, value: params.fetch('passwordless[email]', nil), required: true, name: 'passwordless[email]', class: "block shadow bg-white rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
