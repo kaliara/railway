@@ -100,7 +100,9 @@
 
       <% if reservation.accommodation_cabin? %>
         <div class="my-5">
-          <%= form.label :cabin_mate_request, 'Is there another party or guest you\'d like to share a cabin with?' %>
+          <%= form.label :cabin_mate_request do %>
+            Is there another party you'd like to share a cabin with? <strong class="font-semibold">(scroll to the information below to learn more about the cabins)</strong>
+          <% end %>
           <%= form.text_field :cabin_mate_request, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
           <div class="text-xs text-gray-500">indicate the first and last name of the guest(s)</div>
         </div>
