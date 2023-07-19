@@ -5,8 +5,16 @@ class Reservation < ApplicationRecord
     first_name.blank?
   end
 
+  def optional_completed?
+    true
+  end
+
   def multiple_days?
     [attending_friday, attending_saturday, attending_sunday].map(&:to_s).tally['true'].to_i > 0
+  end
+
+  def no_response?
+    created_at == updated_at
   end
 
   def cabin_own_linens_discrete?

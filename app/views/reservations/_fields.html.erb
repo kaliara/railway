@@ -87,29 +87,27 @@
     <% end %>
   </div>
 
-  <% if reservation.multiple_days? %>
-    <div class="my-10">
-      <%= form.label :accommodation_cabin, 'Would you like to stay in a free on-site cabin?' %>
-      <%= form.label :accommodation_cabin_false, class: "block" do %>
-        <%= form.radio_button :accommodation_cabin, false, data: { instant_target: 'input' } %>
-        No
-      <% end %>
-      <%= form.label :accommodation_cabin_true, class: "block" do %>
-        <%= form.radio_button :accommodation_cabin, true, data: { instant_target: 'input' } %>
-        Yes!
-      <% end %>
+  <div class="my-10">
+    <%= form.label :accommodation_cabin, 'Would you like to stay in a free on-site cabin?' %>
+    <%= form.label :accommodation_cabin_false, class: "block" do %>
+      <%= form.radio_button :accommodation_cabin, false, data: { instant_target: 'input' } %>
+      No
+    <% end %>
+    <%= form.label :accommodation_cabin_true, class: "block" do %>
+      <%= form.radio_button :accommodation_cabin, true, data: { instant_target: 'input' } %>
+      Yes!
+    <% end %>
 
-      <% if reservation.accommodation_cabin? %>
-        <div class="my-5">
-          <%= form.label :cabin_mate_request do %>
-            Is there another party you'd like to share a cabin with? <strong class="font-semibold">(scroll to the information below to learn more about the cabins)</strong>
-          <% end %>
-          <%= form.text_field :cabin_mate_request, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
-          <div class="text-xs text-gray-500">indicate the first and last name of the guest(s)</div>
-        </div>
-      <% else %>
-        <%= form.hidden_field :cabin_mate_request, value: '' %>
-      <% end %>
-    </div>
-  <% end %>
+    <% if reservation.accommodation_cabin? %>
+      <div class="my-5">
+        <%= form.label :cabin_mate_request do %>
+          Is there another party you'd like to share a cabin with? <strong class="font-semibold">(scroll to the information below to learn more about the cabins)</strong>
+        <% end %>
+        <%= form.text_field :cabin_mate_request, class: "block shadow  bg-white rounded-md border border-gray-200 outline-none px-3 py-2 my-2 w-full" %>
+        <div class="text-xs text-gray-500">indicate the first and last name of the guest(s)</div>
+      </div>
+    <% else %>
+      <%= form.hidden_field :cabin_mate_request, value: '' %>
+    <% end %>
+  </div>
 <% end %>
