@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_19_162820) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_25_164351) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,6 +71,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_19_162820) do
     t.integer "activity_preference_zipline", default: 7
     t.boolean "accommodation_camper", default: false
     t.boolean "private_cabin", default: false
+    t.string "cabin_linens_disclaimer"
+    t.string "cabin_mate_names"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 

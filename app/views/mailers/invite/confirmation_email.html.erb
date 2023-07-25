@@ -320,8 +320,8 @@ a {text-decoration: none;}
                     <% if !@reservation.no_response? %>
                       <div style="padding: 30px; background: #ffffff;width:540px;margin:0 auto;">
                         <% if @reservation.attending? %>
-                          <h2 style="font-size:22px; margin: -0px 0 20px;text-align:center;">We are excited that <span style="white-space:nowrap">you can attend! 🎉</span></h2>
-                          <p style="text-align: center; color:#666; margin-bottom: 40px;">Please review your RSVP below and make any changes</p>
+                          <h2 style="font-size:22px; line-height: 30px; margin: -0px 0 20px;text-align:center;">We are excited that you can attend <span style="white-space:nowrap">Matthew and Elyse's wedding! 🎉</span></h2>
+                          <p style="text-align: center; color:#666; margin-bottom: 40px;">Please review your RSVP below and <%= link_to 'make any changes', instant_login_url(token: @user.instant_login_token) %>.</p>
                           <div style="text-align: left; padding-left: 30px;">
                             <div style="margin: 5px 0 15px;">
                               <span style="text-decoration: underline;">Your party:</span>
@@ -331,10 +331,10 @@ a {text-decoration: none;}
                               <% end %>
                             </div>
                             <% if @reservation.accommodation_cabin? %>
-                              <div style="margin: 5px 0 15px;"><span style="text-decoration: underline;">Accomodations:</span>
+                              <div style="margin: 5px 0 15px;"><span style="text-decoration: underline;">Accommodations:</span>
                                 <% if @reservation.accommodation_cabin? %>
                                   <% if @reservation.private_cabin? %>
-                                    <strong class="font-semibold">private cabin on-site</strong> with bathroom and shower
+                                    <strong class="font-semibold">a private cabin on-site</strong> with bathroom and shower
                                   <% else %>
                                     <strong class="font-semibold">a cabin on-site</strong> with bathroom and shower
                                   <% end %>
@@ -344,20 +344,26 @@ a {text-decoration: none;}
                               </div>
                               <% if !@reservation.private_cabin? %>
                                 <div style="margin: 5px 0 15px;"><span style="text-decoration: underline;">Cabin mate:</span>
-                                  we are finalizing the cabin plan and <strong class="font-semibold">we will let you know soon!</strong>
+                                  <% if !@reservation.cabin_mate_names.blank? %>
+                                    you will be bunking with <strong class="font-semibold"><%= @reservation.cabin_mate_names %></strong>
+                                  <% else %>
+                                    we are finalizing the cabin plan and <strong class="font-semibold">we will let you know soon!</strong>
+                                  <% end %>
                                 </div>
                               <% end %>
                               <div style="margin: 5px 0 15px;">
                                 <span style="text-decoration: underline;">Linens:</span>
                                 <% if @reservation.cabin_own_linens == 'all' %>
-                                  You are bringing <strong>all of the linens</strong> needed for your party
+                                  You are bringing <strong>all of your own linens</strong> (sheets, pillows, pillow cases, and blankets)
                                 <% elsif @reservation.cabin_own_linens == 'some' %>
-                                  You are bringing <strong>some of the linens</strong> needed for your party
+                                  You are bringing some of your own linens. <strong><%= @reservation.cabin_linens_disclaimer %></strong>
                                 <% else %>
-                                  You would like linens provided for you
+                                  linens will be provided for you
                                 <% end %>
                               </div>
                             <% end %>
+                            <div style="margin: 5px 0 15px;"><span style="text-decoration: underline;">Food allergies:</span> <%= @reservation.food_allergies || 'None' %></div>
+                            <div style="margin: 5px 0 15px;"><span style="text-decoration: underline;">Dietary preferences:</span> <%= @reservation.dietary_preferences || 'None' %></div>
                             <div style="margin: 5px 0 15px;">
                               <span style="text-decoration: underline;">Meals you plan on attending:</span>
                               <table style="margin: 0px 10px 10px;" cellpadding="0" cellspacing="0">
@@ -411,32 +417,10 @@ a {text-decoration: none;}
                                       <img class="adapt-img" src="https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/assets/icon-no.png" alt="No" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="22" title="No" />
                                     <% end %>
                                   </td>
-                                  <td style="border-top: 1px solid #ddd; padding: 5px 15px 5px 5px;">4:30pm - 6:00pm</td>
-                                  <td style="border-top: 1px solid #ddd; padding: 5px 15px 5px 5px;">Cocktail hour</td>
-                                </tr>
-                                <tr class="<% if !@reservation.meal_saturday_dinner? %>not-going<% end %>">
-                                  <td style="width: 30px;border-top: 1px solid #ddd; padding: 5px 0;">
-                                    <% if @reservation.meal_saturday_dinner? %>
-                                      <img class="adapt-img" src="https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/assets/icon-yes.png" alt="Yes" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="22" title="Yes" />
-                                    <% else %>
-                                      <img class="adapt-img" src="https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/assets/icon-no.png" alt="No" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="22" title="No" />
-                                    <% end %>
-                                  </td>
                                   <td style="border-top: 1px solid #ddd; padding: 5px 15px 5px 5px;">6:00pm</td>
                                   <td style="border-top: 1px solid #ddd; padding: 5px 15px 5px 5px;">Reception</td>
                                 </tr>
-                                <tr class="<% if !@reservation.meal_saturday_snack? %>not-going<% end %>">
-                                  <td style="width: 30px;border-top: 1px solid #ddd; padding: 5px 0;">
-                                    <% if @reservation.meal_saturday_snack? %>
-                                      <img class="adapt-img" src="https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/assets/icon-yes.png" alt="Yes" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="22" title="Yes" />
-                                    <% else %>
-                                      <img class="adapt-img" src="https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/assets/icon-no.png" alt="No" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="22" title="No" />
-                                    <% end %>
-                                  </td>
-                                  <td style="border-top: 1px solid #ddd; padding: 5px 15px 5px 5px;">10pm</td>
-                                  <td style="border-top: 1px solid #ddd; padding: 5px 15px 5px 5px;">Late-night snack</td>
                                 <tr>
-                                </tr>
                                   <td class="h-5" colspan="2"></td>
                                 </tr>
                                 <tr>
@@ -455,8 +439,6 @@ a {text-decoration: none;}
                                 </tr>
                               </table>
                             </div>
-                            <div style="margin: 5px 0 15px;"><span style="text-decoration: underline;">Food allergies:</span> <%= @reservation.food_allergies || 'None' %></div>
-                            <div style="margin: 5px 0 15px;"><span style="text-decoration: underline;">Dietary preferences:</span> <%= @reservation.dietary_preferences || 'None' %></div>
                           </div>
                         <% else %>
                           We are sorry to hear that you cannot make it. 🥺 But thank you for letting us know!
