@@ -301,36 +301,42 @@ a {text-decoration: none;}
                                 (<%= pluralize(@reservation.guests_adults + 1, 'adult') %>, <%= pluralize(@reservation.guests_children, 'kid') %>)
                               <% end %>
                             </div>
-                            <% if @reservation.accommodation_cabin? %>
-                              <div style="margin: 5px 0 15px;"><span style="text-decoration: underline;">Accommodations:</span>
-                                <% if @reservation.accommodation_cabin? %>
-                                  <% if @reservation.private_cabin? %>
-                                    <strong class="font-semibold">a private cabin on-site</strong> with bathroom and shower
+                            <% if @reservation.staying_onsite? %>
+                              <% if @reservation.accommodation_cabin? %>
+                                <div style="margin: 5px 0 15px;"><span style="text-decoration: underline;">Accommodations:</span>
+                                  <% if @reservation.accommodation_cabin? %>
+                                    <% if @reservation.private_cabin? %>
+                                      <strong class="font-semibold">a private cabin on-site</strong> with bathroom and shower
+                                    <% else %>
+                                      <strong class="font-semibold">a cabin on-site</strong> with bathroom and shower
+                                    <% end %>
                                   <% else %>
-                                    <strong class="font-semibold">a cabin on-site</strong> with bathroom and shower
+                                    staying <strong class="font-semibold">off-site</strong>
                                   <% end %>
-                                <% else %>
-                                  Staying <strong class="font-semibold">off-site</strong> in hotel or Airbnb
+                                </div>
+                                <% if !@reservation.private_cabin? %>
+                                  <div style="margin: 5px 0 15px;"><span style="text-decoration: underline;">Cabin mate:</span>
+                                    <% if !@reservation.cabin_mate_names.blank? %>
+                                      you will be bunking with <strong class="font-semibold"><%= @reservation.cabin_mate_names %></strong>
+                                    <% else %>
+                                      we are finalizing the cabin plan and <strong class="font-semibold">we will let you know soon!</strong>
+                                    <% end %>
+                                  </div>
                                 <% end %>
-                              </div>
-                              <% if !@reservation.private_cabin? %>
-                                <div style="margin: 5px 0 15px;"><span style="text-decoration: underline;">Cabin mate:</span>
-                                  <% if !@reservation.cabin_mate_names.blank? %>
-                                    you will be bunking with <strong class="font-semibold"><%= @reservation.cabin_mate_names %></strong>
+                                <div style="margin: 5px 0 15px;">
+                                  <span style="text-decoration: underline;">Bed Linens:</span>
+                                  <% if @reservation.cabin_own_linens == 'all' %>
+                                    You are bringing <strong>all of your own bed linens</strong> - sheets, pillows, pillow cases, and blankets (<%= link_to 'make changes here', instant_login_url(token: @user.instant_login_token) %>)
+                                  <% elsif @reservation.cabin_own_linens == 'some' %>
+                                    <strong><%= @reservation.cabin_linens_disclaimer %></strong> (<%= link_to 'make changes here', instant_login_url(token: @user.instant_login_token) %>)
                                   <% else %>
-                                    we are finalizing the cabin plan and <strong class="font-semibold">we will let you know soon!</strong>
+                                    bed linens will be provided for you (please still bring your own towels)
                                   <% end %>
                                 </div>
                               <% end %>
-                              <div style="margin: 5px 0 15px;">
-                                <span style="text-decoration: underline;">Bed Linens:</span>
-                                <% if @reservation.cabin_own_linens == 'all' %>
-                                  You are bringing <strong>all of your own bed linens</strong> - sheets, pillows, pillow cases, and blankets (<%= link_to 'make changes here', instant_login_url(token: @user.instant_login_token) %>)
-                                <% elsif @reservation.cabin_own_linens == 'some' %>
-                                  <strong><%= @reservation.cabin_linens_disclaimer %></strong> (<%= link_to 'make changes here', instant_login_url(token: @user.instant_login_token) %>)
-                                <% else %>
-                                  bed linens will be provided for you (please still bring your own towels)
-                                <% end %>
+                            <% else %>
+                              <div style="margin: 5px 0 15px;"><span style="text-decoration: underline;">Accommodations:</span>
+                                staying <strong class="font-semibold">off-site</strong> (if you change your mind and want to say in the cabins, just <%= link_to 'let us know', instant_login_url(token: @user.instant_login_token) %> by Aug 1)
                               </div>
                             <% end %>
                             <div style="margin: 5px 0 15px;"><span style="text-decoration: underline;">Food allergies:</span> <%= @reservation.food_allergies || 'None' %></div>
@@ -344,9 +350,9 @@ a {text-decoration: none;}
                                 <tr class="<% if !@reservation.meal_friday_dinner? %>not-going<% end %>">
                                   <td style="width: 30px;border-top: 1px solid #ddd; padding: 5px 0;">
                                     <% if @reservation.meal_friday_dinner? %>
-                                      <img class="adapt-img" src="https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/assets/icon-yes.png" alt="Yes" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="22" title="Yes" />
+                                    <span style='color: green; font-weight: bold;'>&check;</span>
                                     <% else %>
-                                      <img class="adapt-img" src="https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/assets/icon-no.png" alt="No" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="22" title="No" />
+                                      <span style='color: red; font-weight: bold;'>&times;</span>
                                     <% end %>
                                   </td>
                                   <td style="border-top: 1px solid #ddd; padding: 5px 15px 5px 5px;">6pm - 8pm</td>
@@ -361,9 +367,9 @@ a {text-decoration: none;}
                                 <tr class="<% if !@reservation.meal_saturday_breakfast? %>not-going<% end %>">
                                   <td style="width: 30px;border-top: 1px solid #ddd; padding: 5px 0;">
                                     <% if @reservation.meal_saturday_breakfast? %>
-                                      <img class="adapt-img" src="https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/assets/icon-yes.png" alt="Yes" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="22" title="Yes" />
+                                    <span style='color: green; font-weight: bold;'>&check;</span>
                                     <% else %>
-                                      <img class="adapt-img" src="https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/assets/icon-no.png" alt="No" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="22" title="No" />
+                                      <span style='color: red; font-weight: bold;'>&times;</span>
                                     <% end %>
                                   </td>
                                   <td style="border-top: 1px solid #ddd; padding: 5px 15px 5px 5px;">8am - 10am</td>
@@ -372,9 +378,9 @@ a {text-decoration: none;}
                                 <tr class="<% if !@reservation.meal_saturday_lunch? %>not-going<% end %>">
                                   <td style="width: 30px;border-top: 1px solid #ddd; padding: 5px 0;">
                                     <% if @reservation.meal_saturday_lunch? %>
-                                      <img class="adapt-img" src="https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/assets/icon-yes.png" alt="Yes" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="22" title="Yes" />
+                                    <span style='color: green; font-weight: bold;'>&check;</span>
                                     <% else %>
-                                      <img class="adapt-img" src="https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/assets/icon-no.png" alt="No" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="22" title="No" />
+                                      <span style='color: red; font-weight: bold;'>&times;</span>
                                     <% end %>
                                   </td>
                                   <td style="border-top: 1px solid #ddd; padding: 5px 15px 5px 5px;">12pm - 2pm</td>
@@ -383,9 +389,9 @@ a {text-decoration: none;}
                                 <tr class="<% if !@reservation.meal_saturday_dinner? %>not-going<% end %>">
                                   <td style="width: 30px;border-top: 1px solid #ddd; padding: 5px 0;">
                                     <% if @reservation.meal_saturday_dinner? %>
-                                      <img class="adapt-img" src="https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/assets/icon-yes.png" alt="Yes" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="22" title="Yes" />
+                                    <span style='color: green; font-weight: bold;'>&check;</span>
                                     <% else %>
-                                      <img class="adapt-img" src="https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/assets/icon-no.png" alt="No" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="22" title="No" />
+                                      <span style='color: red; font-weight: bold;'>&times;</span>
                                     <% end %>
                                   </td>
                                   <td style="border-top: 1px solid #ddd; padding: 5px 15px 5px 5px;">6:00pm</td>
@@ -400,9 +406,9 @@ a {text-decoration: none;}
                                 <tr class="<% if !@reservation.meal_sunday_brunch? %>not-going<% end %>">
                                   <td style="width: 30px;border-top: 1px solid #ddd; padding: 5px 0;">
                                     <% if @reservation.meal_sunday_brunch? %>
-                                      <img class="adapt-img" src="https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/assets/icon-yes.png" alt="Yes" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="22" title="Yes" />
+                                    <span style='color: green; font-weight: bold;'>&check;</span>
                                     <% else %>
-                                      <img class="adapt-img" src="https://<%= Rails.application.config.action_mailer.default_url_options[:host] %>/assets/icon-no.png" alt="No" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="22" title="No" />
+                                      <span style='color: red; font-weight: bold;'>&times;</span>
                                     <% end %>
                                   </td>
                                   <td style="border-top: 1px solid #ddd; padding: 5px 15px 5px 5px;">10am - 12pm</td>
