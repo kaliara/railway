@@ -74,20 +74,6 @@
             </li>
           </ul>
       </li>
-      <li id="registry">
-          <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Registry / Cause Donation</h2>
-          <ul>
-              <li>
-                <strong class="font-semibold text-gray-900">Your presence at our wedding is more than enough! A gift is not expected.</strong>
-                However, for friends and family who have expressed an interest, we have created a
-                <%= link_to 'gift registry', "http://registry.theknot.com/elyse-dolde-matthew-kaliara-september-2023-ny/54487095", target: '_blank', class: "text-pink-600 hover:text-pink-800", target: "_blank" %>.
-                <br>
-                <br>
-                We would love for you to donate to Foster Love (or another cause of your choice) in lieu of gifts, if you feel so inclined. Foster Love provides duffle bags for kids in the foster system, including a teddy bear, blanket, hygiene kit, coloring book, and crayons. This small change can make a big difference to the many children who have to use trash bags to carry their belongings.
-                <br><%= link_to 'Make a donation to Foster Love', "https://fundraise.fosterlove.com/campaign/elyse-and-matthew/", target: '_blank', class: "block mt-2 text-base font-semibold text-pink-600 hover:text-pink-800", target: "_blank" %>
-            </li>
-          </ul>
-      </li>
       <li>
           <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Attire</h2>
           <ul>
@@ -206,11 +192,10 @@
           <ul class="list-disc mx-4">
               <li>Towels for showering and for swimming</li>
               <li>Bed linens if you are staying in the cabins (not required, but appreciated!)
-              <ul class="list-[circle] mx-4">
-                      <li>Sheets (Queen for couple, Twin for single) and blanket or sleeping bags</li>
-                      <li>Pillows</li>
-                      <li>If you ARE bringing linens, please <%= link_to 'let us know', optional_survey_path, class: 'text-pink-600 hover:text-pink-800' %> by August 1st.</li>
-                  </ul>
+                <ul class="list-[circle] mx-4">
+                  <li>Queen sheets and blankets with pillows for couples, twin sheets and blankets with pillow for singles</li>
+                  <li>If you ARE bringing linens, please <%= link_to 'let us know', optional_survey_path, class: 'text-pink-600 hover:text-pink-800' %> by August 1st.</li>
+                </ul>
               </li>
               <li>Bathing suits if you want to swim or use the <%= link_to '300 foot slip-n-slide', asset_url('slip-slide-mobile.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
               <li>Warm layers for chilly evenings by the fire</li>
@@ -218,6 +203,20 @@
               <li>Raincoat and/or umbrella (just to ensure that these won&rsquo;t be necessary)</li>
               <li>Bug spray</li>
               <li>Sunscreen</li>
+          </ul>
+      </li>
+      <li id="registry">
+          <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Registry / Cause Donation</h2>
+          <ul>
+              <li>
+                <strong class="font-semibold text-gray-900">Your presence at our wedding is more than enough! A gift is not expected.</strong>
+                However, for friends and family who have expressed an interest, we have created a
+                <%= link_to 'gift registry', "http://registry.theknot.com/elyse-dolde-matthew-kaliara-september-2023-ny/54487095", target: '_blank', class: "text-pink-600 hover:text-pink-800", target: "_blank" %>.
+                <br>
+                <br>
+                We would love for you to donate to Foster Love (or another cause of your choice) in lieu of gifts, if you feel so inclined. Foster Love provides duffle bags for kids in the foster system, including a teddy bear, blanket, hygiene kit, coloring book, and crayons. This small change can make a big difference to the many children who have to use trash bags to carry their belongings.
+                <br><%= link_to 'Make a donation to Foster Love', "https://fundraise.fosterlove.com/campaign/elyse-and-matthew/", target: '_blank', class: "block mt-2 text-base font-semibold text-pink-600 hover:text-pink-800", target: "_blank" %>
+            </li>
           </ul>
       </li>
   </ul>

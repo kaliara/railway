@@ -26,12 +26,10 @@
         <div class="text-right p-6 block space-x-8">
           <% if current_user %>
             <%= link_to 'Details', root_path(anchor: 'details'), class: 'text-pink-600 hover:text-pink-800 font-medium' %>
-            <%= link_to 'Registry', root_path(anchor: 'registry'), class: 'text-pink-600 hover:text-pink-800 font-medium' %>
             <%= link_to 'My RSVP', edit_reservation_path, class: 'text-pink-600 hover:text-pink-800 font-medium' %>
             <%#= link_to 'Log out', users.sign_out_path, class: 'text-pink-600 hover:text-pink-800 font-medium' %>
           <% else %>
             <%= link_to 'Details', root_path(anchor: 'details'), class: 'text-pink-600 hover:text-pink-800 font-medium' %>
-            <%= link_to 'Registry', root_path(anchor: 'registry'), class: 'text-pink-600 hover:text-pink-800 font-medium' %>
           <% end %>
         </div>
         <% if !flash[:alert].blank? %>
