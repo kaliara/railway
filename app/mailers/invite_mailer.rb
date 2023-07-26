@@ -24,9 +24,9 @@ class InviteMailer < ApplicationMailer
   def confirmation_email
     @reservation = @user.reservation
     if @user.guest_of_elyse?
-      mail(from: "Elyse and Matthew <edolde165@gmail.com>", to: @user.email, subject: "RSVP confirmation for Elyse & Matthew's wedding weekend")
+      mail(from: "Elyse and Matthew <edolde165@gmail.com>", to: 'edolde165@gmail.com', subject: "RSVP confirmation for Elyse & Matthew's wedding weekend")
     else
-      mail(from: "Elyse and Matthew <matthew@kaliara>", to: @user.email, subject: "RSVP confirmation for Elyse & Matthew's wedding weekend")
+      mail(from: "Elyse and Matthew <matthew@kaliara>", to: 'edolde165@gmail.com', subject: "RSVP confirmation for Elyse & Matthew's wedding weekend")
     end
   end
 end
