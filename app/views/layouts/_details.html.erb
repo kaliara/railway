@@ -1,6 +1,5 @@
 <h1 class="font-normal text-3xl mb-12" id="reservation_form">Details</h1>
 <div class="text-sm leading-relaxed text-gray-900/80">
-  <p class="bg-yellow-100 text-xs inline-block font-semibold leading-relaxed text-yellow-700 px-4 py-2 rounded">Note: this section may be updated with additional details as we get closer.</p>
   <ul>
       <li>
           <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Schedule</h2>
@@ -31,13 +30,16 @@
                 <td class="border-pink-600/20 py-1 pr-3 whitespace-nowrap" style="border-top-width: 1px; border-top-style: solid;">10am - 3pm</td><td class="border-pink-600/20 py-1" style="border-top-width: 1px; border-top-style: solid;">Camp activities</td>
             </tr>
             <tr>
+                <td class="border-pink-600/20 py-1 pr-3 whitespace-nowrap" style="border-top-width: 1px; border-top-style: solid;">12pm - 2pm</td><td class="border-pink-600/20 py-1" style="border-top-width: 1px; border-top-style: solid;">Lunch at the Dining Hall and Patio</td>
+            </tr>
+            <tr>
                 <td class="border-pink-600/20 py-1 pr-3 whitespace-nowrap" style="border-top-width: 1px; border-top-style: solid;">3:30pm</td><td class="border-pink-600/20 py-1" style="border-top-width: 1px; border-top-style: solid;">Make your way to the Amphitheater</td>
             </tr>
             <tr>
                 <td class="border-pink-600/20 py-1 pr-3 whitespace-nowrap" style="border-top-width: 1px; border-top-style: solid;">4pm - 4:30pm</td><td class="border-pink-600/20 py-1" style="border-top-width: 1px; border-top-style: solid;">Ceremony at the Amphitheater</td>
             </tr>
             <tr>
-                <td class="border-pink-600/20 py-1 pr-3 whitespace-nowrap" style="border-top-width: 1px; border-top-style: solid;">4:30pm - 6:00pm</td><td class="border-pink-600/20 py-1" style="border-top-width: 1px; border-top-style: solid;">Cocktail hour at the Welcome Center</td>
+                <td class="border-pink-600/20 py-1 pr-3 whitespace-nowrap" style="border-top-width: 1px; border-top-style: solid;">4:30pm - 6:00pm</td><td class="border-pink-600/20 py-1" style="border-top-width: 1px; border-top-style: solid;">Cocktail hour (90 mins!) at the Welcome Center</td>
             </tr>
             <tr>
                 <td class="border-pink-600/20 py-1 pr-3 whitespace-nowrap" style="border-top-width: 1px; border-top-style: solid;">6:00pm</td><td class="border-pink-600/20 py-1" style="border-top-width: 1px; border-top-style: solid;">Reception at the Dining Hall</td>
@@ -145,7 +147,15 @@
       <li>
           <h2 class="text-xl mt-10 mb-2 font-semibold text-gray-900 border-pink-600" style="border-bottom-width: 2px; border-bottom-style: solid;">Activities</h2>
           <ul>
-              <li>These activities are available at any time throughout the weekend:
+              <li>Some activities require camp staff and are <strong class="font-semibold text-gray-900">available on Saturday before and after lunch.</strong>
+              <ul class="list-[circle] mx-4">
+                      <li><%= link_to 'Zipline', asset_url('new-8O8A1483.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
+                      <li><%= link_to 'Go-karts', asset_url('new-8O8A1671.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
+                      <li><%= link_to 'Climbing wall', asset_url('060bdfde_original.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
+                      <li><%= link_to 'Archery', asset_url('archery.png'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %> (maybe)</li>
+                  </ul>
+              </li>
+              <li class="mt-4">Other activities are available at any time throughout the weekend:
               <ul class="list-[circle] mx-4">
                       <li><%= link_to 'Gymnastics and tumbling area for kids', asset_url('gym.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
                       <li><%= link_to 'Indoor and outdoor basketball', asset_url('new-IMG_5364.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
@@ -154,16 +164,6 @@
                       <li>Tetherball</li>
                       <li><%= link_to 'Tennis', asset_url('56b24d77_original.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
                       <li>Hiking trails</li>
-                  </ul>
-              </li>
-              <li class="mt-4">Some activities require camp staff and are available at specific times (we'll pick a few based <%= link_to 'how you vote', optional_survey_path, class: 'text-pink-600 hover:text-pink-800' %>):
-              <ul class="list-[circle] mx-4">
-                      <li><%= link_to 'Swimming pool', asset_url('b6d58147_original.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
-                      <li><%= link_to 'Zipline', asset_url('new-8O8A1483.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
-                      <li><%= link_to 'Climbing wall', asset_url('060bdfde_original.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
-                      <li><%= link_to 'Go-karts', asset_url('new-8O8A1671.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
-                      <li><%= link_to 'Archery', asset_url('archery.png'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
-                      <li><%= link_to 'Slip-n-slide', asset_url('slip-slide-mobile.jpg'), class: 'text-pink-600 hover:text-pink-800', target: '_blank' %></li>
                   </ul>
               </li>
           </ul>

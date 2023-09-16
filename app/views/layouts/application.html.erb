@@ -235,8 +235,10 @@
                                   </div>
                               </div>
                               <div class="w-full">
-                                <p class="mb-4">The map below can be used to get a general sense of the size and amenities of the camp. An updated map will be added with wedding specific labeling soon!</p>
-                                <%= image_tag 'map-v0.png', alt: 'map' %>
+                                <p class="mb-4">The map below can be used to get a general sense of the size and amenities of the camp. Feel free to add it as a photo on your phone for easy access.</p>
+                                <%= link_to asset_url('map-new.png'), target: '_blank' do %>
+                                  <%= image_tag 'map-new.png', alt: 'map' %>
+                                <% end %>
                               </div>
                           </div>
                       </div>
