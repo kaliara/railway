@@ -8,29 +8,58 @@
     <div class="text-base font-normal">
       Hello, <%= @reservation.first_name %>.
       <% if @reservation.attending? %>
-        We are excited that you can attend! 🎉 We have you down for
-        <strong class="font-semibold">
-          <%= pluralize @reservation.party_size, 'person' %>
-          <% if @reservation.accommodation_cabin? %>
-            staying on-site in the cabins.
-          <% elsif @reservation.accommodation_rv? || @reservation.accommodation_camper? || @reservation.accommodation_tent? %>
-            <%
-              accommodation = []
-              accommodation << 'RV' if @reservation.accommodation_rv?
-              accommodation << 'camper' if @reservation.accommodation_camper?
-              accommodation << 'tent' if @reservation.accommodation_tent?
-            %>
-            staying on-site in your <%= accommodation.to_sentence %>.
-          <% else %>
-            staying off-site.
+        We are excited that you can attend! 🎉
+
+        <p class="mt-2 text-sm">
+          <% if !@reservation.cabin_number.blank? %>
+            <div style="padding: 0 10px 10px; background: rgba(171,92,104,0.15); border: 1px solid #ab5c68; border-radius: 5px;">
+              <p class="mt-2 text-sm">
+                <strong class="text-sm">
+                  We have you down for <%= pluralize @reservation.party_size, 'person' %>
+                  <% if @reservation.accommodation_cabin? %>
+                    staying on-site in
+                    <% if @reservation.cabin_number == 'Lodge' %>
+                      The Lodge
+                    <% else %>
+                      Cabin #<%= @reservation.cabin_number %>
+                    <% end %>
+                    <% if @reservation.private_cabin? %>
+                      (private cabin).
+                    <% else %>
+                      <% if !@reservation.cabin_mate_names.blank? %>
+                      (with <%= @reservation.cabin_mate_names %>).
+                      <% end %>
+                    <% end %>
+                  <% else %>
+                    staying off-site.
+                  <% end %>
+                </strong>
+              </p>
+              <p class="mt-2 text-sm">
+                When you arrive, check in at the Welcome Center.
+                <% if !@reservation.cabin_number.blank? %>
+                  You can check into your cabin beginning Friday at 4pm.
+                  Camp staff will be available to give you a golf cart ride to your cabin.
+                <% else %>
+                  Camp staff will direct you where to go.
+                <% end %>
+              </p>
+              <p class="mt-2 text-sm">
+                <% if @reservation.cabin_own_linens == 'all' || @reservation.cabin_own_linens == 'some'  %>
+                  <span style="text-decoration: underline">You are bringing bed linens <%= @reservation.cabin_linens_disclaimer %></span>.
+                <% else %>
+                  Bed linens will be provided for you.
+                <% end %>
+                Please bring your own towel. It may get chilly at night so be sure to pack some warm layers.
+              </p>
+            </div>
           <% end %>
-        </strong>
+        </p>
       <% else %>
         We are sorry to hear that you cannot make it. 🥺 But thank you for letting us know!
       <% end %>
     </div>
-    <div class="text-sm font-normal text-gray-500 mt-4 mb-4">Has something changed? Update your RSVP below before August 1st.</div>
-    <%= link_to 'Update RSVP', reservation_path, class: "rounded-lg no-underline py-3 px-5 bg-pink-600 hover:bg-pink-700 text-white inline-block font-medium cursor-pointer" %>
+    <div class="text-sm font-normal text-gray-500 mt-4 mb-4">Has something changed? Text Matthew or Elyse or email us at <strong class="text-gray-900 semibold">wedding@kaliara.com</strong>.</div>
   <% end %>
 <% else %>
 <div class="w-full flex">

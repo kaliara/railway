@@ -6,4 +6,4 @@ Passwordless.expires_at = lambda { 1.year.from_now }
 Passwordless.timeout_at = lambda { 1.year.from_now }
 
 Passwordless.failure_redirect_path = '/error'
-Passwordless.success_redirect_path = '/reservation/edit'
+Passwordless.success_redirect_path = '/'

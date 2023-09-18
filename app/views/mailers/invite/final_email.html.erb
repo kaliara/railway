@@ -296,11 +296,11 @@ a {text-decoration: none;}
                           </p>
                           <p style="text-align: center; margin-top: 5px; margin-bottom: 0px;">
                             <% if @reservation.cabin_own_linens == 'all' || @reservation.cabin_own_linens == 'some'  %>
-                              <span style="text-decoration: underline">You are bringing bed linens for <%= @reservation.cabin_linens_disclaimer %></span>.
+                              <span style="text-decoration: underline">You are bringing bed linens <%= @reservation.cabin_linens_disclaimer %></span>.
                             <% else %>
                               Bed linens will be provided for you.
                             <% end %>
-                            Please still bring your own towel. It may get chilly at night so be sure to pack some warm layers.
+                            Please bring your own towel. It may get chilly at night so be sure to pack some warm layers.
                           </p>
                         </div>
                       <% end %>

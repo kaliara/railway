@@ -32,12 +32,6 @@ class InviteMailer < ApplicationMailer
 
   def final_email
     @reservation = @user.reservation
-    if @user.guest_of_elyse?
-      # mail(from: "Elyse and Matthew <edolde165@gmail.com>", to: @user.email, subject: "Get ready for Elyse & Matthew's wedding weekend!")
-      mail(from: "Elyse and Matthew <edolde165@gmail.com>", to: 'edolde165@gmail.com', subject: "Get ready for Elyse & Matthew's wedding weekend!")
-    else
-      # mail(from: "Elyse and Matthew <matthew@kaliara>", to: @user.email, subject: "Get ready for Elyse & Matthew's wedding weekend!")
-      mail(from: "Elyse and Matthew <matthew@kaliara>", to: 'test@kaliara.com', subject: "Get ready for Elyse & Matthew's wedding weekend!")
-    end
+    mail(from: "Elyse and Matthew <matthew@kaliara>", to: @user.email, subject: "Get ready for Elyse & Matthew's wedding weekend!")
   end
 end

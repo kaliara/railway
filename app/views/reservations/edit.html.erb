@@ -2,7 +2,45 @@
   <h1 class="font-normal text-3xl mb-2" id="reservation_form">My RSVP</h1>
   <p class="text-sm mt-2 mb-8">View the schedule, accomodations, and other <a href="#details" class="text-pink-600 hover:text-pink-800 font-medium">wedding details</a>.</p>
 
-  <%= turbo_frame_tag dom_id(@reservation) do %>
-    <%= render "form", reservation: @reservation %>
-  <% end %>
+  <p class="mt-2 text-sm">
+    <strong class="text-sm">
+      We have you down for <%= pluralize @reservation.party_size, 'person' %>
+      <% if @reservation.accommodation_cabin? %>
+        staying on-site in
+        <% if @reservation.cabin_number == 'Lodge' %>
+          The Lodge
+        <% else %>
+          Cabin #<%= @reservation.cabin_number %>
+        <% end %>
+        <% if @reservation.private_cabin? %>
+          (private cabin).
+        <% else %>
+          <% if !@reservation.cabin_mate_names.blank? %>
+          (with <%= @reservation.cabin_mate_names %>).
+          <% end %>
+        <% end %>
+      <% else %>
+        staying off-site.
+      <% end %>
+    </strong>
+  </p>
+  <p class="mt-2 text-sm">
+    When you arrive, check in at the Welcome Center.
+    <% if !@reservation.cabin_number.blank? %>
+      You can check into your cabin beginning Friday at 4pm.
+      Camp staff will be available to give you a golf cart ride to your cabin.
+    <% else %>
+      Camp staff will direct you where to go.
+    <% end %>
+  </p>
+  <p class="mt-2 text-sm">
+    <% if @reservation.cabin_own_linens == 'all' || @reservation.cabin_own_linens == 'some'  %>
+      <span style="text-decoration: underline">You are bringing bed linens <%= @reservation.cabin_linens_disclaimer %></span>.
+    <% else %>
+      Bed linens will be provided for you.
+    <% end %>
+    Please bring your own towel. It may get chilly at night so be sure to pack some warm layers.
+  </p>
+
+  <div class="text-sm font-normal text-gray-500 mt-4 mb-4">Has something changed? Text Matthew or Elyse or email us at <strong class="text-gray-900 semibold">wedding@kaliara.com</strong>.</div>
 </div>

@@ -9,6 +9,6 @@ class InviteMailerPreview < ActionMailer::Preview
     InviteMailer.with(user: User.find(69)).confirmation_email
   end
   def final_email
-    InviteMailer.with(user: User.find(18)).final_email
+    InviteMailer.with(user: User.find(89)).final_email
   end
 end
